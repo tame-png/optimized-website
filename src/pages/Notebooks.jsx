@@ -25,7 +25,7 @@ export default function Notebooks({ theme, fontStack }) {
     <div style={{ background: paper, color: ink, fontFamily: serif, minHeight: '100vh', position: 'relative' }}>
       <NavBar ink={ink} accent={accent} mono={mono} active="notebooks" />
 
-      <section style={{ padding: '52px 56px 0' }}>
+      <section className="notebooks-header" style={{ padding: '52px 56px 0' }}>
         <div style={{
           fontFamily: mono, fontSize: 10, letterSpacing: '0.18em',
           textTransform: 'uppercase', color: accent, marginBottom: 12,
@@ -72,8 +72,8 @@ export default function Notebooks({ theme, fontStack }) {
         </div>
       </section>
 
-      <section style={{ padding: '0 56px 60px' }}>
-        <div style={{
+      <section className="notebooks-cards" style={{ padding: '0 56px 60px' }}>
+        <div className="cards-grid" style={{
           display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
           gap: '48px 36px',
         }}>
@@ -120,7 +120,7 @@ export default function Notebooks({ theme, fontStack }) {
                   display: 'flex', flexWrap: 'wrap', gap: 6,
                   fontFamily: mono, fontSize: 10, color: `${ink}aa`, flex: 1,
                 }}>
-                  {[...p.methods, ...p.tools].slice(0, 6).map((m) => (
+                  {[...new Set([...p.methods, ...p.tools])].slice(0, 6).map((m) => (
                     <span key={m} style={{
                       padding: '3px 8px', border: `0.5px solid ${ink}33`, borderRadius: 2
                     }}>{m}</span>

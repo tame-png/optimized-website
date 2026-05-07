@@ -22,6 +22,7 @@ function App() {
         <Route path="/resume.html" element={<Navigate to="/resume" replace />} />
         <Route path="/lbrhe.html" element={<Navigate to="/lbrhe" replace />} />
         <Route path="/viewer.html" element={<Navigate to="/notebooks" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

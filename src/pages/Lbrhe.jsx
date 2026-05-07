@@ -12,7 +12,7 @@ export default function LBRHEPage({ theme, fontStack }) {
   const mono = MONO;
 
   const SectionHead = ({ num, title, kicker }) => (
-    <div style={{
+    <div className="section-head" style={{
       borderTop: `2px solid ${ink}`, paddingTop: 14, marginTop: 56, marginBottom: 24,
       display: 'grid', gridTemplateColumns: '120px 1fr', gap: 24, alignItems: 'baseline',
     }}>
@@ -55,7 +55,7 @@ export default function LBRHEPage({ theme, fontStack }) {
       padding: '0 0 120px', position: 'relative',
     }}>
       {/* Nav */}
-      <nav style={{
+      <nav className="lbrhe-nav" style={{
         padding: '20px 64px', display: 'flex', justifyContent: 'space-between',
         alignItems: 'center',
         fontFamily: mono, fontSize: 10.5, letterSpacing: '0.12em',
@@ -68,7 +68,7 @@ export default function LBRHEPage({ theme, fontStack }) {
       </nav>
 
       {/* Title spread */}
-      <header style={{ padding: '64px 64px 40px', maxWidth: 1200, margin: '0 auto' }}>
+      <header className="lbrhe-header" style={{ padding: '64px 64px 40px', maxWidth: 1200, margin: '0 auto' }}>
         <div style={{
           fontFamily: mono, fontSize: 10, letterSpacing: '0.2em',
           textTransform: 'uppercase', color: accent, marginBottom: 22,
@@ -86,7 +86,7 @@ export default function LBRHEPage({ theme, fontStack }) {
           color: `${ink}cc`, maxWidth: '38em', fontStyle: 'italic',
         }}>{L.META.subtitle}</p>
 
-        <div style={{
+        <div className="meta-grid" style={{
           marginTop: 40,
           display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28,
           paddingTop: 20, borderTop: `0.5px solid ${ink}33`,
@@ -115,11 +115,11 @@ export default function LBRHEPage({ theme, fontStack }) {
       </header>
 
       {/* Abstract */}
-      <section style={{
+      <section className="lbrhe-abstract" style={{
         background: panel, padding: '52px 64px',
         borderTop: `0.5px solid ${ink}22`, borderBottom: `0.5px solid ${ink}22`,
       }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto',
+        <div className="abstract-inner" style={{ maxWidth: 1200, margin: '0 auto',
           display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 48, alignItems: 'start' }}>
           <div>
             <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, marginBottom: 14 }}>Abstract</div>
@@ -165,10 +165,10 @@ export default function LBRHEPage({ theme, fontStack }) {
         </div>
       </section>
 
-      <main style={{ maxWidth: 1200, margin: '0 auto', padding: '0 64px' }}>
+      <main className="lbrhe-main" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 64px' }}>
         {/* § I The City */}
         <SectionHead num="I" kicker="The city, in five figures" title="A statistical portrait of Long Beach." />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 24 }}>
+        <div className="stats-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 24 }}>
           <Stat large value="494K" label="residents across the four PUMAs studied" sub="2023 ACS" {...theme} />
           <Stat large value="$96K" label="median household income, citywide" sub="ACS 1-year" {...theme} />
           <Stat large value="1 in 4" label="residents on Medicaid or other public assistance" sub="HINS4 + PAP" {...theme} />
@@ -176,7 +176,7 @@ export default function LBRHEPage({ theme, fontStack }) {
           <Stat large value="14%" label="of residents live with a disability" sub="DIS" {...theme} />
         </div>
 
-        <div style={{ marginTop: 56, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 40, alignItems: 'start' }}>
+        <div className="three-col" style={{ marginTop: 56, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 40, alignItems: 'start' }}>
           <figure style={{ margin: 0 }}>
             <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: `${ink}99`, marginBottom: 8 }}>Fig. 1 · Race &amp; ethnicity</div>
             <Donut data={L.DEMOGRAPHICS.race} {...theme} size={200}
@@ -197,7 +197,7 @@ export default function LBRHEPage({ theme, fontStack }) {
           </figure>
         </div>
 
-        <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center' }}>
+        <div className="two-col" style={{ marginTop: 48, display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center' }}>
           <figure style={{ margin: 0 }}>
             <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: `${ink}99`, marginBottom: 8 }}>Fig. 4 · The four study geographies</div>
             <PumaMap {...theme} />
@@ -218,7 +218,7 @@ export default function LBRHEPage({ theme, fontStack }) {
 
         {/* § II Method */}
         <SectionHead num="II" kicker="Method" title="From 5 million rows to 17 variables." />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
+        <div className="two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
           <div>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: `${ink}d0`, marginTop: 0 }}>
               The American Community Survey publishes its Public Use Microdata
@@ -262,7 +262,7 @@ export default function LBRHEPage({ theme, fontStack }) {
         </div>
 
         {/* Timeline */}
-        <ol style={{
+        <ol className="timeline-grid" style={{
           marginTop: 40, padding: 0, listStyle: 'none',
           display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0,
           borderTop: `2px solid ${ink}`, borderBottom: `0.5px solid ${ink}33`,
@@ -281,7 +281,7 @@ export default function LBRHEPage({ theme, fontStack }) {
 
         {/* § III Poverty */}
         <SectionHead num="III" kicker="Finding I — Poverty" title="What aggregation hides." />
-        <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 48 }}>
+        <div className="two-col" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 48 }}>
           <div>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: `${ink}d0`, marginTop: 0 }}>
               At the level of the five standard race categories, Black residents
@@ -311,7 +311,7 @@ export default function LBRHEPage({ theme, fontStack }) {
           </div>
         </div>
 
-        <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36 }}>
+        <div className="three-col" style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36 }}>
           <figure style={{ margin: 0 }}>
             <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: `${ink}99`, marginBottom: 10 }}>Fig. 5a · Poverty by race</div>
             <HBar data={L.POVERTY.race} {...theme} highlight={['Black']} max={50} />
@@ -331,7 +331,7 @@ export default function LBRHEPage({ theme, fontStack }) {
 
         {/* § IV Education */}
         <SectionHead num="IV" kicker="Finding II — Education" title="The same shape, in a different field." />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 48, alignItems: 'start' }}>
+        <div className="two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 48, alignItems: 'start' }}>
           <p style={{ fontSize: 17, lineHeight: 1.6, color: `${ink}d0`, marginTop: 0 }}>
             The pattern repeats with educational attainment. 44% of Latino
             residents lack a high school diploma — already the highest of any
@@ -351,7 +351,7 @@ export default function LBRHEPage({ theme, fontStack }) {
 
         {/* § V Health & Income */}
         <SectionHead num="V" kicker="Finding III — Health &amp; income" title="What insurance the city carries." />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
+        <div className="two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
           <figure style={{ margin: 0 }}>
             <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: `${ink}99`, marginBottom: 10 }}>Fig. 7 · Residents on Medicaid / Med-Cal</div>
             <HBar data={L.MEDICAID} {...theme} highlight={['Latinx', 'Black']} max={45} />
@@ -364,7 +364,7 @@ export default function LBRHEPage({ theme, fontStack }) {
           </figure>
         </div>
 
-        <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 36, alignItems: 'start' }}>
+        <div className="three-col" style={{ marginTop: 48, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 36, alignItems: 'start' }}>
           <figure style={{ margin: 0 }}>
             <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: `${ink}99`, marginBottom: 10 }}>Fig. 9 · Median household income (thousands)</div>
             <HBar data={L.HH_INCOME} {...theme} value="k" max={130}
@@ -396,7 +396,7 @@ export default function LBRHEPage({ theme, fontStack }) {
           community-facing distribution by the Department of Health &amp;
           Human Services.
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 24 }}>
+        <div className="deliverables-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 24 }}>
           {L.TABLEAU_LINKS.map((d) => (
             <a key={d.region} href={d.href} target="_blank" rel="noopener noreferrer"
               style={{
@@ -415,7 +415,7 @@ export default function LBRHEPage({ theme, fontStack }) {
 
         {/* § VII Andy's role */}
         <SectionHead num="VII" kicker="Author's contribution" title="What Andy Molina did, specifically." />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
+        <div className="contribution-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
           <ol style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 18 }}>
             {L.ANDY_CONTRIBUTION.map((c, i) => (
               <li key={i} style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 14, alignItems: 'baseline' }}>
@@ -475,7 +475,7 @@ export default function LBRHEPage({ theme, fontStack }) {
         </p>
 
         {/* Colophon */}
-        <footer style={{
+        <footer className="lbrhe-colophon" style={{
           marginTop: 80, paddingTop: 18,
           borderTop: `2px solid ${ink}`,
           display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24,
