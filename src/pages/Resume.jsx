@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MONO } from '../data';
+import { MONO, SKILLS } from '../data';
 
 export default function Resume({ theme, fontStack }) {
   const { ink, accent, paper, panel } = theme;
   const serif = fontStack.serif;
   const display = fontStack.display || serif;
   const mono = MONO;
+
+  React.useEffect(() => { document.title = 'Résumé · Andy Molina'; }, []);
 
   const PERSON = {
     name: 'Andy Molina',
@@ -20,12 +22,6 @@ export default function Resume({ theme, fontStack }) {
     degree: 'Bachelor of Science, Applied Statistics',
     expected: 'Expected May 2028',
     gpa: '3.38'
-  };
-  const SKILLS = {
-    'Languages': ['Python', 'SQL', 'R', 'Bash'],
-    'Cloud & DevOps': ['Amazon Web Services', 'Git', 'Docker'],
-    'Data Science': ['Scikit-learn', 'LangChain', 'Ollama', 'Hugging Face',
-      'Pandas', 'NumPy', 'Tableau', 'Excel']
   };
   const PROJECTS = [
     {

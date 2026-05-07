@@ -11,6 +11,8 @@ export default function LBRHEPage({ theme, fontStack }) {
   const display = fontStack.display || serif;
   const mono = MONO;
 
+  React.useEffect(() => { document.title = 'Long Beach Equity Research · Andy Molina'; }, []);
+
   const SectionHead = ({ num, title, kicker }) => (
     <div className="section-head" style={{
       borderTop: `2px solid ${ink}`, paddingTop: 14, marginTop: 56, marginBottom: 24,

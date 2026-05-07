@@ -84,6 +84,7 @@ export function HeroChart({ ink, accent, paper, height = 260 }) {
   const innerW = W - padL - padR;
   const innerH = H - padT - padB;
   const N = HERO_SERIES.length;
+  const clipId = React.useId().replace(/:/g, '');
 
   const xs = (h) => padL + (h / (N - 1)) * innerW;
   const maxV = 7300;
@@ -142,8 +143,12 @@ export function HeroChart({ ink, accent, paper, height = 260 }) {
   }, [dragging]);
 
   const inWindow = HERO_SERIES.filter((p) => p.hour >= brush[0] && p.hour <= brush[1]);
-  const mean = inWindow.reduce((s, p) => s + p.value, 0) / Math.max(1, inWindow.length);
-  const peak = inWindow.reduce((m, p) => (p.value > m.value ? p : m), inWindow[0]);
+  const mean = inWindow.length > 0
+    ? inWindow.reduce((s, p) => s + p.value, 0) / inWindow.length
+    : 0;
+  const peak = inWindow.length > 0
+    ? inWindow.reduce((m, p) => (p.value > m.value ? p : m), inWindow[0])
+    : null;
 
   const bx0 = xs(brush[0]);
   const bx1 = xs(brush[1]);
@@ -193,10 +198,10 @@ export function HeroChart({ ink, accent, paper, height = 260 }) {
         <path d={path} fill="none" stroke={ink} strokeWidth="1.0" />
         <rect x={bx0} y={padT} width={Math.max(1, bx1 - bx0)} height={innerH}
           fill={accent} opacity="0.13" />
-        <clipPath id="brushClip">
+        <clipPath id={clipId}>
           <rect x={bx0} y={padT} width={Math.max(1, bx1 - bx0)} height={innerH} />
         </clipPath>
-        <path d={path} fill="none" stroke={accent} strokeWidth="1.6" clipPath="url(#brushClip)" />
+        <path d={path} fill="none" stroke={accent} strokeWidth="1.6" clipPath={`url(#${clipId})`} />
         <rect x={bx0} y={padT} width={Math.max(1, bx1 - bx0)} height={innerH}
           fill="transparent" style={{ cursor: 'grab' }} onPointerDown={onDown('m')} />
         <rect x={bx0 - 4} y={padT} width="8" height={innerH}

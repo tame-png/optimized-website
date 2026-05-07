@@ -12,6 +12,8 @@ export default function Notebooks({ theme, fontStack }) {
   const mono = MONO;
   const navigate = useNavigate();
 
+  React.useEffect(() => { document.title = 'Notebooks · Andy Molina'; }, []);
+
   const [query, setQuery] = React.useState('');
   const [focused, setFocused] = React.useState(null);
 
@@ -78,10 +80,11 @@ export default function Notebooks({ theme, fontStack }) {
           gap: '48px 36px',
         }}>
           {filtered.map((p) => (
-            <article key={p.id} onClick={() => {
-              if (p.href) { navigate(p.href); }
-              else { setFocused(p); }
-            }} style={{ cursor: 'pointer' }}>
+            <article key={p.id}
+              role="button" tabIndex={0}
+              onClick={() => { if (p.href) { navigate(p.href); } else { setFocused(p); } }}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (p.href) { navigate(p.href); } else { setFocused(p); } } }}
+              style={{ cursor: 'pointer' }}>
               <div style={{
                 aspectRatio: '3 / 2', overflow: 'hidden',
                 background: panel, border: `0.5px solid ${ink}22`,

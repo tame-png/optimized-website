@@ -12,7 +12,7 @@ export const PERSON = {
 
 export const SKILLS = {
   Languages: ['Python', 'SQL', 'R', 'Bash'],
-  'Cloud & DevOps': ['AWS', 'Git', 'Docker'],
+  'Cloud & DevOps': ['Amazon Web Services', 'Git', 'Docker'],
   'Data Science': ['Scikit-learn', 'LangChain', 'Ollama', 'Hugging Face',
     'Pandas', 'NumPy', 'Tableau', 'Excel'],
 };
@@ -112,5 +112,9 @@ export const PROJECTS = [
 ];
 
 export const THEME = { ink: '#e8dcc4', accent: '#d97a5a', paper: '#1c1814', panel: '#26211a' };
-export const FONTS = { serif: "'Spectral', 'EB Garamond', serif", display: "'Spectral', 'EB Garamond', serif" };
-export const MONO = "'JetBrains Mono', ui-monospace, monospace";
+export const FONTS = {
+  serif: "'Spectral', 'EB Garamond', serif",
+  display: "'Spectral', 'EB Garamond', serif",
+  mono: "'JetBrains Mono', ui-monospace, monospace",
+};
+export const MONO = FONTS.mono;

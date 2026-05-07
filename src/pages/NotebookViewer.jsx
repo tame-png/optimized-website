@@ -14,6 +14,12 @@ export default function NotebookViewer({ theme, fontStack }) {
   const projects = PROJECTS;
   const project = projects.find((p) => p.id === projectId);
 
+  React.useEffect(() => {
+    document.title = project
+      ? `${project.title} · Andy Molina`
+      : 'Notebooks · Andy Molina';
+  }, [project]);
+
   const [mode, setMode] = React.useState('static'); // 'static' or 'marimo'
   const [iframeLoaded, setIframeLoaded] = React.useState(false);
 
