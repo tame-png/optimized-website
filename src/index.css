@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #1c1814;
+}
+
+body {
+  font-family: 'Spectral', 'EB Garamond', serif;
+  color: #e8dcc4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: #d97a5a;
+  color: #1c1814;
+}
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #2a221a !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  article {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}

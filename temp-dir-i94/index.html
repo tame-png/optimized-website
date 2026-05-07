@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>i94-marimo</title>
+    <script type="module" crossorigin src="./assets/index-CL4WR8q8.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-DItdS47A.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-BqBOg78p.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-BR0C1MaI.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-YteS-k_t.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-C3fmBb6j.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-B6z1Qyqt.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-BegSZk0G.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CGtUbqcR.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-Dz_KRrWq.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-DCUzRj2J.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-C7-HR1IO.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-D9nb17Rw.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-BDxedMYP.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-CwUpDHG7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BoOh2kN5.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-D5guW7EU.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-BH35Ndha.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-C-6liIBr.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-5i7URBEn.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-Gcwqb_SK.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-T0_cQDma.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-BUdrueMv.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-DKD1r8uL.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-_9WLTEyt.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-DIGrmLDO.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-DMWKlZOV.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-DercMavo.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-CUzZ0y7K.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-DMpttj8Q.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-VtovaFBS.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-DczIUz0b.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-DIwGYs0l.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-DieWOfXE.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-DfoVjkkH.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-Cb4Wekek.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-DYDL-3-i.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-md4mFbOQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-DRroIaBz.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-C_FLIcjP.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-1ePoj7v6.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-BXWH6vv4.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BrR4M-k3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-HlsDto3K.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CHcznzB-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-VjDnmGCZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-E6ttb8td.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBiqbYe-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DQOq2Tf-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B324sPca.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C9ZB41s2.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-CtmkcLz7.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-B5A0DFEz.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-DBmVz-Wl.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-BRGiG41H.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-DhnxH9Rh.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-kIkTfzTX.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-B0OX4z33.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-CcBfzJ1Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DzYV_VeY.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-B3Breaz2.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-D0NLybAx.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BGBdrcqJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-Dj0qTFnG.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-CLMpJfhX.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-CAW8yjzj.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-kyGHZp36.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-B3MsQb-b.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-DtiQW2H_.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-CfcdTqJM.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BX98vgAu.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-D7lQ0Q7_.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-BRdZl0OJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-rafH3cg3.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DvqcBMUv.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-CG5QYXYk.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-D1A3cFC8.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-Dpap8NI2.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-CgXnbA14.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-BCF-tANo.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-BwrPA9zQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BYNydU7b.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-8cI8zL5y.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-Czm_KBfK.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-DCT6JLba.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-CZ5WmLPA.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-Dbk0HqOA.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-Bhir8k53.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-BHdf1t5J.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-CXQpR65O.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-BFC6lWG9.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-BF3xpDgO.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-DzSMahmM.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-e_arGD4o.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-DmnGXdCp.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-CBCkexpx.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-UExmgBsf.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-TZBmrJmc.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-YUQiaxS9.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DPyRV1LT.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-BvE4n6hj.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-C6aBa98y.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-Dsc8AdCp.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-D_il4jD7.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-C8T5uJYI.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CAlnO9QB.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-C48Oksn0.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-B2LJnKU3.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-DD4AwVTU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CgFoBhVq.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-D9xfKaPZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-6NxtGaCm.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-KAhMaCIV.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-CWm2KnSx.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-CKlZA04n.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-BUNcfKXO.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-02ehjjSC.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-nqk474t8.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-D1dlJvD8.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-Cq8FVoTf.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-vertical-CkwWkOQL.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DHwG4Mac.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-Ci3CV3hN.js">
+    <link rel="modulepreload" crossorigin href="./assets/components-DVKf_7RU.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-rDM8Q-wn.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-D9TuFTJG.js">
+    <link rel="modulepreload" crossorigin href="./assets/radio-group-6t7ozlnG.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-BtNnv2IX.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-DaPAPabU.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-BmrwxxCo.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-n1Li95bE.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-BgB18UzY.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-JBCsN3-9.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-BrQspHac.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BrdxGLRX.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-DQHXdEQn.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-CMxkj_kV.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-ecwOrzz3.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-BRAWQiYK.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-B-ZMi0ZU.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-DIVpiHPe.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-D-eV0cU3.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-Tp7rARFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-C-qh_et5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CxV9N1bc.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-DGoUR-mM.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-DTR8T0AE.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-BI_mXP9w.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-C-n2VFP5.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-EgPmt17c.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-DZpkrZaP.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-BrLPDxsA.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-CINae4Gg.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-B_vDzBHf.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-D0WTlCXt.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-W8WWuumF.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-Bzn96tYq.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-DOhgNpTR.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-BiQYf0aU.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-DaYh1PsD.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DiS_ryrS.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Dl4V1ub3.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DqWUNly1.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-CZN6vNxu.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-mGK3v0Mm.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-DMaNzePN.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-B8l157gP.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-BIoPrMH_.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-jmgGt1lS.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DH5UUBE4.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "import marimo\n\n__generated_with = \"0.23.5\"\napp = marimo.App()\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Indicators of Heavy Traffic on I-94\n    In this project, we're going to analyze a dataset about the westbound traffic on the [I-94 Interstate highway](https://en.wikipedia.org/wiki/Interstate_94).\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    The goal of our analysis is to determine a few indicators of heavy traffic on I-94. These indicators can be weather type, time of the day, time of the week, etc.\n    ***\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # The I-94 Traffic Dataset\n    John Hogue made the dataset available that we'll be working with, and you can download it from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/492/metro+interstate+traffic+volume).\n    ***\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Variables Table\n    | Variable Name       | Role    | Type        | Description                                                      | Units  | Missing Values |\n    |:--------------------|:--------|:------------|:-----------------------------------------------------------------|:-------|:---------------|\n    | holiday             | Feature | Categorical | US National holidays plus regional holiday, Minnesota State Fair |        | no             |\n    | temp                | Feature | Continuous  | Average temp in kelvin                                           | Kelvin | no             |\n    | rain_1h             | Feature | Continuous  | Amount in mm of rain that occurred in the hour                   | mm     | no             |\n    | snow_1h             | Feature | Continuous  | Amount in mm of snow that occurred in the hour                   | mm     | no             |\n    | clouds_all          | Feature | Integer     | Percentage of cloud cover                                        | %      | no             |\n    | weather_main        | Feature | Categorical | Short textual description of the current weather                 |        | no             |\n    | weather_description | Feature | Categorical | Longer textual description of the current weather                |        | no             |\n    | date_time           | Feature | Date        | Hour of the data collected in local CST time                     |        | no             |\n    | traffic_volume      | Target  | Integer     | Hourly I-94 ATR 301 reported westbound traffic volume            |        | no             |\n    ***\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(mo):\n    import pandas as pd\n\n    path = str(mo.notebook_location() / \"public\" / \"Metro_Interstate_Traffic_Volume.csv\")\n    try:\n        from pyodide.http import open_url\n        i_94 = pd.read_csv(open_url(path))\n    except ImportError:\n        i_94 = pd.read_csv(path)\n\n    return i_94, pd\n\n\n@app.cell\ndef _(i_94):\n    i_94.info()\n    i_94.head()\n    return\n\n\n@app.cell\ndef _(i_94):\n    import matplotlib.pyplot as plt\n    # '%matplotlib inline' command supported automatically in marimo\n\n    i_94.traffic_volume.plot.hist(title = \"distribution of traffic volume\", xlabel= \"Traffic Volume (cars per hour)\",)\n    plt.gca()\n    return (plt,)\n\n\n@app.cell\ndef _(i_94):\n    i_94['traffic_volume'].describe()\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    The range of hourly traffic volume varied from 0 to 7,280 cars, with an average of 3,260 cars. About 25% of the time, there were only 1,193 cars or fewer passing the station each hour,this probably occurs during the night or when a road is under construction. However, about 25% of the time, the traffic volume was four times as much (4,933 cars or more). This observation gives our analysis an interesting direction: comparing daytime data with nighttime data.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Traffic Volume: Day vs. Night\n\n    We are going to divide the dataset into 2:\n    * Daytime Data: hours from 7am to 7pm\n    * Nighttime Data: hours from 7pm to 7am\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    Twelve hours each as a starting point\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(i_94, pd):\n    i_94['date_time'] = pd.to_datetime(i_94['date_time'])\n\n    day = i_94.copy()[(i_94['date_time'].dt.hour \u003E= 7) \u0026 (i_94['date_time'].dt.hour\u003C19)]\n    print(day.shape)\n\n    night = i_94.copy()[(i_94['date_time'].dt.hour \u003E= 19) | (i_94['date_time'].dt.hour\u003C7)]\n    print(night.shape)\n    return day, night\n\n\n@app.cell\ndef _(i_94):\n    i_94.iloc[176:178]\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    The reason theirs a difference in the number of rows is because there is a discontinuity in the reporting data where on October 10th of 2012 we are missing 2 hours worth of data\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(day, night, plt):\n    plt.figure(figsize=(12,4))\n\n    plt.subplot(1,2,1)\n    day[\"traffic_volume\"].plot.hist(title = 'Daytime traffic volume', xlabel = 'Traffic Volume(cars per hour)', ylabel = 'Frequency')\n\n    plt.subplot(1,2,2)\n    night['traffic_volume'].plot.hist(title = 'Nighttime traffic volume',xlabel = 'Traffic Volume(cars per hour)', ylabel = 'Frequency')\n    plt.gcf()\n    return\n\n\n@app.cell\ndef _(day):\n    day['traffic_volume'].describe()\n    return\n\n\n@app.cell\ndef _(night):\n    night['traffic_volume'].describe()\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    The daytime histogram shows us that the highest frequency of car volume is in the range of 4,000 to 6,000 cars, and has consistent high traffic volumes with at least 4,200 cars passing through 75% of the time (25th percentile). The nighttime histogram shows us the traffic volume remains low, being concentrated on the front of the histogram, while the series describing tell us 75% of the time they theirs at least 530 cars passing through. Since we are concerned about finding the causes of high traffic volume, the focus shall be shifted to the daytime hours.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Time Indicators\n\n    One of the possible indicators of heavy traffic is time. There might be more people on the road in a certain month, on a certain day, or at a certain time of day.\n    We're going to look at a few line plots showing how the traffic volume changes according to the following:\n\n    - Month\n    - Day of the week\n    - Time of day\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(day, plt):\n    day['month'] = day['date_time'].dt.month\n    by_month = day.groupby('month').mean(numeric_only=True)\n    by_month['traffic_volume'].plot.line()\n    plt.gca()\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    From the line graph above we can see that traffic volume by months, that it remains rather high throughout the year with two exceptions. The first being that in the month of July, we see a big dip which eventually recovers in the month of September. The second being that towards the end of the year, the volume of traffic seems to steeply decrease until it recovers in the following January.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(day, plt):\n    day['year'] = day['date_time'].dt.year\n\n    only_july = day[day['month'] == 7]\n\n    only_july.groupby('year')['traffic_volume'].mean().plot.line()\n\n    plt.gca()\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    Upon further investigation, we can see that by looking at the change of traffic for the month of July year over year, that July 2014 we begin a decrease in traffic volume. The lowest traffic volume occurring in July 2016 before rapidly increasing in 2017, to slowly begin to decrease again in 2018.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(day, plt):\n    day['dayofweek'] = day['date_time'].dt.dayofweek\n    by_dayofweek = day.groupby('dayofweek').mean(numeric_only=True)\n    by_dayofweek['traffic_volume'].plot.line() # 0 is Monday, 6 is Sunday\n    plt.xticks(range(7), ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])\n    plt.xlabel('Day of the Week')\n    plt.gca()\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    From here we can see that, overall traffic volume is very heavy during the bussines days of the week. During the weekends though the traffic volume drops below 4,800.\n    \"\"\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.23.5%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Indicators%20of%20Heavy%20Traffic%20on%20I-94%0A%20%20%20%20In%20this%20project%2C%20we're%20going%20to%20analyze%20a%20dataset%20about%20the%20westbound%20traffic%20on%20the%20%5BI-94%20Interstate%20highway%5D(https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FInterstate_94).%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20The%20goal%20of%20our%20analysis%20is%20to%20determine%20a%20few%20indicators%20of%20heavy%20traffic%20on%20I-94.%20These%20indicators%20can%20be%20weather%20type%2C%20time%20of%20the%20day%2C%20time%20of%20the%20week%2C%20etc.%0A%20%20%20%20***%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20The%20I-94%20Traffic%20Dataset%0A%20%20%20%20John%20Hogue%20made%20the%20dataset%20available%20that%20we'll%20be%20working%20with%2C%20and%20you%20can%20download%20it%20from%20the%20%5BUCI%20Machine%20Learning%20Repository%5D(https%3A%2F%2Farchive.ics.uci.edu%2Fdataset%2F492%2Fmetro%2Binterstate%2Btraffic%2Bvolume).%0A%20%20%20%20***%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Variables%20Table%0A%20%20%20%20%7C%20Variable%20Name%20%20%20%20%20%20%20%7C%20Role%20%20%20%20%7C%20Type%20%20%20%20%20%20%20%20%7C%20Description%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20Units%20%20%7C%20Missing%20Values%20%7C%0A%20%20%20%20%7C%3A--------------------%7C%3A--------%7C%3A------------%7C%3A-----------------------------------------------------------------%7C%3A-------%7C%3A---------------%7C%0A%20%20%20%20%7C%20holiday%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20Feature%20%7C%20Categorical%20%7C%20US%20National%20holidays%20plus%20regional%20holiday%2C%20Minnesota%20State%20Fair%20%7C%20%20%20%20%20%20%20%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20%7C%20temp%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20Feature%20%7C%20Continuous%20%20%7C%20Average%20temp%20in%20kelvin%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20Kelvin%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20%7C%20rain_1h%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20Feature%20%7C%20Continuous%20%20%7C%20Amount%20in%20mm%20of%20rain%20that%20occurred%20in%20the%20hour%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20mm%20%20%20%20%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20%7C%20snow_1h%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20Feature%20%7C%20Continuous%20%20%7C%20Amount%20in%20mm%20of%20snow%20that%20occurred%20in%20the%20hour%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20mm%20%20%20%20%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20%7C%20clouds_all%20%20%20%20%20%20%20%20%20%20%7C%20Feature%20%7C%20Integer%20%20%20%20%20%7C%20Percentage%20of%20cloud%20cover%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%25%20%20%20%20%20%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20%7C%20weather_main%20%20%20%20%20%20%20%20%7C%20Feature%20%7C%20Categorical%20%7C%20Short%20textual%20description%20of%20the%20current%20weather%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20%7C%20weather_description%20%7C%20Feature%20%7C%20Categorical%20%7C%20Longer%20textual%20description%20of%20the%20current%20weather%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20%7C%20date_time%20%20%20%20%20%20%20%20%20%20%20%7C%20Feature%20%7C%20Date%20%20%20%20%20%20%20%20%7C%20Hour%20of%20the%20data%20collected%20in%20local%20CST%20time%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20%7C%20traffic_volume%20%20%20%20%20%20%7C%20Target%20%20%7C%20Integer%20%20%20%20%20%7C%20Hourly%20I-94%20ATR%20301%20reported%20westbound%20traffic%20volume%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%7C%20no%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%0A%20%20%20%20***%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20import%20pandas%20as%20pd%0A%0A%20%20%20%20path%20%3D%20str(mo.notebook_location()%20%2F%20%22public%22%20%2F%20%22Metro_Interstate_Traffic_Volume.csv%22)%0A%20%20%20%20try%3A%0A%20%20%20%20%20%20%20%20from%20pyodide.http%20import%20open_url%0A%20%20%20%20%20%20%20%20i_94%20%3D%20pd.read_csv(open_url(path))%0A%20%20%20%20except%20ImportError%3A%0A%20%20%20%20%20%20%20%20i_94%20%3D%20pd.read_csv(path)%0A%0A%20%20%20%20return%20i_94%2C%20pd%0A%0A%0A%40app.cell%0Adef%20_(i_94)%3A%0A%20%20%20%20i_94.info()%0A%20%20%20%20i_94.head()%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(i_94)%3A%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20%23%20'%25matplotlib%20inline'%20command%20supported%20automatically%20in%20marimo%0A%0A%20%20%20%20i_94.traffic_volume.plot.hist(title%20%3D%20%22distribution%20of%20traffic%20volume%22%2C%20xlabel%3D%20%22Traffic%20Volume%20(cars%20per%20hour)%22%2C)%0A%20%20%20%20plt.gca()%0A%20%20%20%20return%20(plt%2C)%0A%0A%0A%40app.cell%0Adef%20_(i_94)%3A%0A%20%20%20%20i_94%5B'traffic_volume'%5D.describe()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20The%20range%20of%20hourly%20traffic%20volume%20varied%20from%200%20to%207%2C280%20cars%2C%20with%20an%20average%20of%203%2C260%20cars.%20About%2025%25%20of%20the%20time%2C%20there%20were%20only%201%2C193%20cars%20or%20fewer%20passing%20the%20station%20each%20hour%2Cthis%20probably%20occurs%20during%20the%20night%20or%20when%20a%20road%20is%20under%20construction.%20However%2C%20about%2025%25%20of%20the%20time%2C%20the%20traffic%20volume%20was%20four%20times%20as%20much%20(4%2C933%20cars%20or%20more).%20This%20observation%20gives%20our%20analysis%20an%20interesting%20direction%3A%20comparing%20daytime%20data%20with%20nighttime%20data.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Traffic%20Volume%3A%20Day%20vs.%20Night%0A%0A%20%20%20%20We%20are%20going%20to%20divide%20the%20dataset%20into%202%3A%0A%20%20%20%20*%20Daytime%20Data%3A%20hours%20from%207am%20to%207pm%0A%20%20%20%20*%20Nighttime%20Data%3A%20hours%20from%207pm%20to%207am%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Twelve%20hours%20each%20as%20a%20starting%20point%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(i_94%2C%20pd)%3A%0A%20%20%20%20i_94%5B'date_time'%5D%20%3D%20pd.to_datetime(i_94%5B'date_time'%5D)%0A%0A%20%20%20%20day%20%3D%20i_94.copy()%5B(i_94%5B'date_time'%5D.dt.hour%20%3E%3D%207)%20%26%20(i_94%5B'date_time'%5D.dt.hour%3C19)%5D%0A%20%20%20%20print(day.shape)%0A%0A%20%20%20%20night%20%3D%20i_94.copy()%5B(i_94%5B'date_time'%5D.dt.hour%20%3E%3D%2019)%20%7C%20(i_94%5B'date_time'%5D.dt.hour%3C7)%5D%0A%20%20%20%20print(night.shape)%0A%20%20%20%20return%20day%2C%20night%0A%0A%0A%40app.cell%0Adef%20_(i_94)%3A%0A%20%20%20%20i_94.iloc%5B176%3A178%5D%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20The%20reason%20theirs%20a%20difference%20in%20the%20number%20of%20rows%20is%20because%20there%20is%20a%20discontinuity%20in%20the%20reporting%20data%20where%20on%20October%2010th%20of%202012%20we%20are%20missing%202%20hours%20worth%20of%20data%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(day%2C%20night%2C%20plt)%3A%0A%20%20%20%20plt.figure(figsize%3D(12%2C4))%0A%0A%20%20%20%20plt.subplot(1%2C2%2C1)%0A%20%20%20%20day%5B%22traffic_volume%22%5D.plot.hist(title%20%3D%20'Daytime%20traffic%20volume'%2C%20xlabel%20%3D%20'Traffic%20Volume(cars%20per%20hour)'%2C%20ylabel%20%3D%20'Frequency')%0A%0A%20%20%20%20plt.subplot(1%2C2%2C2)%0A%20%20%20%20night%5B'traffic_volume'%5D.plot.hist(title%20%3D%20'Nighttime%20traffic%20volume'%2Cxlabel%20%3D%20'Traffic%20Volume(cars%20per%20hour)'%2C%20ylabel%20%3D%20'Frequency')%0A%20%20%20%20plt.gcf()%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(day)%3A%0A%20%20%20%20day%5B'traffic_volume'%5D.describe()%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(night)%3A%0A%20%20%20%20night%5B'traffic_volume'%5D.describe()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20The%20daytime%20histogram%20shows%20us%20that%20the%20highest%20frequency%20of%20car%20volume%20is%20in%20the%20range%20of%204%2C000%20to%206%2C000%20cars%2C%20and%20has%20consistent%20high%20traffic%20volumes%20with%20at%20least%204%2C200%20cars%20passing%20through%2075%25%20of%20the%20time%20(25th%20percentile).%20The%20nighttime%20histogram%20shows%20us%20the%20traffic%20volume%20remains%20low%2C%20being%20concentrated%20on%20the%20front%20of%20the%20histogram%2C%20while%20the%20series%20describing%20tell%20us%2075%25%20of%20the%20time%20they%20theirs%20at%20least%20530%20cars%20passing%20through.%20Since%20we%20are%20concerned%20about%20finding%20the%20causes%20of%20high%20traffic%20volume%2C%20the%20focus%20shall%20be%20shifted%20to%20the%20daytime%20hours.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Time%20Indicators%0A%0A%20%20%20%20One%20of%20the%20possible%20indicators%20of%20heavy%20traffic%20is%20time.%20There%20might%20be%20more%20people%20on%20the%20road%20in%20a%20certain%20month%2C%20on%20a%20certain%20day%2C%20or%20at%20a%20certain%20time%20of%20day.%0A%20%20%20%20We're%20going%20to%20look%20at%20a%20few%20line%20plots%20showing%20how%20the%20traffic%20volume%20changes%20according%20to%20the%20following%3A%0A%0A%20%20%20%20-%20Month%0A%20%20%20%20-%20Day%20of%20the%20week%0A%20%20%20%20-%20Time%20of%20day%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(day%2C%20plt)%3A%0A%20%20%20%20day%5B'month'%5D%20%3D%20day%5B'date_time'%5D.dt.month%0A%20%20%20%20by_month%20%3D%20day.groupby('month').mean(numeric_only%3DTrue)%0A%20%20%20%20by_month%5B'traffic_volume'%5D.plot.line()%0A%20%20%20%20plt.gca()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20From%20the%20line%20graph%20above%20we%20can%20see%20that%20traffic%20volume%20by%20months%2C%20that%20it%20remains%20rather%20high%20throughout%20the%20year%20with%20two%20exceptions.%20The%20first%20being%20that%20in%20the%20month%20of%20July%2C%20we%20see%20a%20big%20dip%20which%20eventually%20recovers%20in%20the%20month%20of%20September.%20The%20second%20being%20that%20towards%20the%20end%20of%20the%20year%2C%20the%20volume%20of%20traffic%20seems%20to%20steeply%20decrease%20until%20it%20recovers%20in%20the%20following%20January.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(day%2C%20plt)%3A%0A%20%20%20%20day%5B'year'%5D%20%3D%20day%5B'date_time'%5D.dt.year%0A%0A%20%20%20%20only_july%20%3D%20day%5Bday%5B'month'%5D%20%3D%3D%207%5D%0A%0A%20%20%20%20only_july.groupby('year')%5B'traffic_volume'%5D.mean().plot.line()%0A%0A%20%20%20%20plt.gca()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Upon%20further%20investigation%2C%20we%20can%20see%20that%20by%20looking%20at%20the%20change%20of%20traffic%20for%20the%20month%20of%20July%20year%20over%20year%2C%20that%20July%202014%20we%20begin%20a%20decrease%20in%20traffic%20volume.%20The%20lowest%20traffic%20volume%20occurring%20in%20July%202016%20before%20rapidly%20increasing%20in%202017%2C%20to%20slowly%20begin%20to%20decrease%20again%20in%202018.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(day%2C%20plt)%3A%0A%20%20%20%20day%5B'dayofweek'%5D%20%3D%20day%5B'date_time'%5D.dt.dayofweek%0A%20%20%20%20by_dayofweek%20%3D%20day.groupby('dayofweek').mean(numeric_only%3DTrue)%0A%20%20%20%20by_dayofweek%5B'traffic_volume'%5D.plot.line()%20%23%200%20is%20Monday%2C%206%20is%20Sunday%0A%20%20%20%20plt.xticks(range(7)%2C%20%5B'Mon'%2C%20'Tue'%2C%20'Wed'%2C%20'Thu'%2C%20'Fri'%2C%20'Sat'%2C%20'Sun'%5D)%0A%20%20%20%20plt.xlabel('Day%20of%20the%20Week')%0A%20%20%20%20plt.gca()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20From%20here%20we%20can%20see%20that%2C%20overall%20traffic%20volume%20is%20very%20heavy%20during%20the%20bussines%20days%20of%20the%20week.%20During%20the%20weekends%20though%20the%20traffic%20volume%20drops%20below%204%2C800.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.23.5",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>

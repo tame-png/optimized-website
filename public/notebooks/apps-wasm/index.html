@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>apps-marimo</title>
+    <script type="module" crossorigin src="./assets/index-CL4WR8q8.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-DItdS47A.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-BqBOg78p.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-BR0C1MaI.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-YteS-k_t.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-C3fmBb6j.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-B6z1Qyqt.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-BegSZk0G.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CGtUbqcR.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-Dz_KRrWq.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-DCUzRj2J.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-C7-HR1IO.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-D9nb17Rw.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-BDxedMYP.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-CwUpDHG7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BoOh2kN5.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-D5guW7EU.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-BH35Ndha.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-C-6liIBr.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-5i7URBEn.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-Gcwqb_SK.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-T0_cQDma.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-D91BmmQi.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-BUdrueMv.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-DKD1r8uL.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-_9WLTEyt.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-DIGrmLDO.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-DMWKlZOV.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-DercMavo.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-CUzZ0y7K.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-DMpttj8Q.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-VtovaFBS.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-DczIUz0b.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-DIwGYs0l.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-DieWOfXE.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-DfoVjkkH.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-Cb4Wekek.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-DYDL-3-i.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-md4mFbOQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-DRroIaBz.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-C_FLIcjP.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-1ePoj7v6.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-BXWH6vv4.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BrR4M-k3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-HlsDto3K.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CHcznzB-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-VjDnmGCZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-E6ttb8td.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBiqbYe-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DQOq2Tf-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B324sPca.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C9ZB41s2.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-CtmkcLz7.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-B5A0DFEz.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-DBmVz-Wl.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-BRGiG41H.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-DhnxH9Rh.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-kIkTfzTX.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-B0OX4z33.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-CcBfzJ1Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DzYV_VeY.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-B3Breaz2.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-D0NLybAx.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BGBdrcqJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-Dj0qTFnG.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-CLMpJfhX.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-CAW8yjzj.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-kyGHZp36.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-B3MsQb-b.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-DtiQW2H_.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-CfcdTqJM.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BX98vgAu.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-D7lQ0Q7_.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-BRdZl0OJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-rafH3cg3.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DvqcBMUv.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-CG5QYXYk.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-D1A3cFC8.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-Dpap8NI2.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-CgXnbA14.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-BCF-tANo.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-BwrPA9zQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BYNydU7b.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-8cI8zL5y.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-Czm_KBfK.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-DCT6JLba.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-CZ5WmLPA.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-Dbk0HqOA.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-Bhir8k53.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-BHdf1t5J.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-CXQpR65O.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-BFC6lWG9.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-BF3xpDgO.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-DzSMahmM.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-e_arGD4o.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-DmnGXdCp.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-CBCkexpx.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-UExmgBsf.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-TZBmrJmc.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-YUQiaxS9.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DPyRV1LT.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-BvE4n6hj.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-C6aBa98y.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-Dsc8AdCp.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-D_il4jD7.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-C8T5uJYI.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CAlnO9QB.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-C48Oksn0.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-B2LJnKU3.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-DD4AwVTU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CgFoBhVq.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-D9xfKaPZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-6NxtGaCm.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-KAhMaCIV.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-CWm2KnSx.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-CKlZA04n.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-BUNcfKXO.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-02ehjjSC.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-nqk474t8.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-D1dlJvD8.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-Cq8FVoTf.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-vertical-CkwWkOQL.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DHwG4Mac.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-Ci3CV3hN.js">
+    <link rel="modulepreload" crossorigin href="./assets/components-DVKf_7RU.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-rDM8Q-wn.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-D9TuFTJG.js">
+    <link rel="modulepreload" crossorigin href="./assets/radio-group-6t7ozlnG.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-BtNnv2IX.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-DaPAPabU.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-BmrwxxCo.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-n1Li95bE.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-BgB18UzY.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-JBCsN3-9.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-BrQspHac.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BrdxGLRX.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-DQHXdEQn.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-CMxkj_kV.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-ecwOrzz3.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-BRAWQiYK.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-B-ZMi0ZU.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-DIVpiHPe.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-D-eV0cU3.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-Tp7rARFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-C-qh_et5.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CxV9N1bc.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-DGoUR-mM.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-DTR8T0AE.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-BI_mXP9w.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-C-n2VFP5.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-EgPmt17c.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-DZpkrZaP.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-BrLPDxsA.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-CINae4Gg.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-B_vDzBHf.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-D0WTlCXt.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-W8WWuumF.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-Bzn96tYq.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-DOhgNpTR.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-BiQYf0aU.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-DaYh1PsD.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DiS_ryrS.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Dl4V1ub3.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DqWUNly1.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-CZN6vNxu.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-mGK3v0Mm.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-DMaNzePN.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-B8l157gP.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-BIoPrMH_.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-jmgGt1lS.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DH5UUBE4.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "import marimo\n\n__generated_with = \"0.23.5\"\napp = marimo.App()\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Profitable App Profiles for the App Store and Google Play Markets\n    Android and iOS mobile apps, and our job is to make data-driven decisions with respect to the kind of apps built.\n    ## Opening and Exploring the Data\n    As of September 2018, there were approximately 2 million iOS apps available on the App Store, and 2.1 million Android apps on Google Play.\n    Collecting data for over four million apps requires a significant amount of time and money, so we'll try to analyze a sample of data instead. To avoid spending resources on collecting new data ourselves, we should first try to see whether we can find any relevant existing data at no cost.\n    ## Data Sets:\n    * A data set containing data about approximately ten thousand Android apps from Google Play. https://www.kaggle.com/datasets/lava18/google-play-store-apps\n    * A data set containing data about approximately seven thousand iOS apps from the App Store. https://www.kaggle.com/datasets/ramamet4/app-store-apple-data-set-10k-apps\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(mo):\n    from csv import reader\n\n    path_g = str(mo.notebook_location() / \"public\" / \"googleplaystore.csv\")\n    try:\n        from pyodide.http import open_url\n        lines_g = open_url(path_g).readlines()\n    except ImportError:\n        if path_g.startswith(\"http\"):\n            import urllib.request\n            lines_g = urllib.request.urlopen(path_g).read().decode('utf8').splitlines()\n        else:\n            with open(path_g, encoding=\"utf8\") as f:\n                lines_g = f.readlines()\n\n    read_file_g = reader(lines_g)\n    android = list(read_file_g)\n    android_header = android[0]\n    android = android[1:]\n\n    path_a = str(mo.notebook_location() / \"public\" / \"AppleStore.csv\")\n    try:\n        from pyodide.http import open_url\n        lines_a = open_url(path_a).readlines()\n    except ImportError:\n        if path_a.startswith(\"http\"):\n            import urllib.request\n            lines_a = urllib.request.urlopen(path_a).read().decode('utf8').splitlines()\n        else:\n            with open(path_a, encoding=\"utf8\") as f:\n                lines_a = f.readlines()\n\n    read_file_a = reader(lines_a)\n    ios = list(read_file_a)\n    ios_header = ios[0]\n    ios = ios[1:]\n\n    return android, android_header, ios, ios_header\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## data cleaning:\n    * removing incomplete row\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(android, android_header):\n    print(android[10472])  # incorrect row\n    print('\\n')\n    print(android_header)  # header\n    print('\\n')\n\n    #del android[10472] #remove it from data set\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    * inaccurate data/deleting duplicate data\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(android):\n    unique_app = []\n    duplicate_apps = []\n    for _app in android:\n        if _app[0] in unique_app:\n            duplicate_apps.append(_app[0])\n        else:\n            unique_app.append(_app[0])\n    print(len(unique_app))\n    print(len(duplicate_apps))\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    Removing duplicates data\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(android, android_header):\n    print(android[2604])  # incorrect row\n    print('\\n')\n    print(android_header)  # header\n    print('\\n')\n    print(len(android_header))\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    We are expecting 9659 apps after we subtract the duplicates to the length of the list\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(android):\n    unique_app_dic = {}\n    test_app = ['Facebook', 'SOCIAL', '4.6', '66577313', 'Varies with device', '1,000,000,000+', 'Free', '0', 'Teen', 'Social', 'July 31, 2018', 'Varies with device', 'Varies with device']\n    test_header = ['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type', 'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver', 'Android Ver']\n    for _app in android:\n        if _app[0] in unique_app_dic:\n            comparison_dic = float(unique_app_dic[_app[0]][2])\n            comparison_i = float(_app[3])\n            if len(_app) == 13 and comparison_dic \u003C comparison_i:\n                updated_values = []\n                for i in range(1, 13):\n                    updated_values.append(_app[i])\n                unique_app_dic[_app[0]] = updated_values\n        elif _app[0] not in unique_app_dic and len(_app) == 13:\n            updated_values = []\n            for i in range(1, 13):\n                updated_values.append(_app[i])\n            unique_app_dic[_app[0]] = updated_values\n    print(len(unique_app_dic))\n    return (unique_app_dic,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ^ we removed the duplicates as well as only leaving the apps with the highest number of reviews within the dictionary\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Isolating the Free Apps\n    As we only want to analyze data from applications that are free to the user\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Android Free Apps Only\n\n    In this Code we have removed all the paid apps from our original `unique_dicitoniary_dic` and created a new dic with only free apps in `android_free_app_dic` removing 755 paid apps\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(unique_app_dic):\n    android_free_app_dic ={}\n\n    for key in unique_app_dic:\n        price = unique_app_dic[key][5]\n        if price == 'Free':\n            if key not in android_free_app_dic:\n                android_free_app_dic[key] = []\n            android_free_app_dic[key].extend(unique_app_dic[key])\n    print(len(android_free_app_dic))\n    return (android_free_app_dic,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ### IOS Free Apps Only\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    In this code we did the same thing as what we did with the android data with the only difference is the nested if/else statements have conditionals making sure that there is no incomplete data or duplicated data. If there is an instance of duplicate apps, we only load the data of the app which has the highest amount of rating count\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(ios, ios_header):\n    print(ios_header)\n    IOS_free_app_dic = {}\n    for _app in ios:\n        ios_price = float(_app[4])\n        ios_name = _app[1]\n        rating_count_tot = int(_app[5])\n        desired_info = _app[2:]\n        track_id = _app[0]\n        if ios_price == 0.0 and len(_app) == 16:\n            if ios_name in IOS_free_app_dic:\n                if int(IOS_free_app_dic[ios_name][4]) \u003C rating_count_tot:\n                    desired_info.insert(0, track_id)\n                    ios_updated_values = desired_info\n                    IOS_free_app_dic[ios_name] = ios_updated_values\n            else:\n                desired_info.insert(0, track_id)\n                IOS_free_app_dic[ios_name] = desired_info\n    print(len(IOS_free_app_dic))\n    return (IOS_free_app_dic,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Most Common Apps by Genre:\n    In order to identify which apps would potentially be the most successful, we are going to look through popular genres and their ratings to see which genre would give us the highest chance of developing a successful app\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    def freq_table(dataset, index):\n        freq_t = {}\n        for key in dataset:\n            value = dataset[key][index]\n            if value not in freq_t:\n                freq_t[value] = 1\n            else:\n                freq_t[value] += 1\n        total_sum = sum(freq_t.values())\n        for key in freq_t:\n            freq_t[key] = (freq_t[key] / total_sum) * 100\n        return freq_t\n\n\n    def display_table(dataset, index):\n        table = freq_table(dataset, index)\n        table_display = []\n        for key in table:\n            key_val_as_tuple = (table[key], key)\n            table_display.append(key_val_as_tuple)\n\n        table_sorted = sorted(table_display, reverse=True)\n        for entry in table_sorted:\n            print(entry[1], ':', entry[0])\n\n    return (display_table,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    Here we used the display table to show the percentage of frequent genres for both IOS and Android stores\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(android_free_app_dic, display_table):\n    android_genre = display_table(android_free_app_dic,8)\n    return\n\n\n@app.cell\ndef _(IOS_free_app_dic, display_table):\n    IOS_genre = display_table(IOS_free_app_dic,10)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Takeaways\n    From here we can tell that if we were to attempt to create a app that is succesfull based off their genres it would be games and tools for the IOS stores, and Google Play store respectively\n    \"\"\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.23.5%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Profitable%20App%20Profiles%20for%20the%20App%20Store%20and%20Google%20Play%20Markets%0A%20%20%20%20Android%20and%20iOS%20mobile%20apps%2C%20and%20our%20job%20is%20to%20make%20data-driven%20decisions%20with%20respect%20to%20the%20kind%20of%20apps%20built.%0A%20%20%20%20%23%23%20Opening%20and%20Exploring%20the%20Data%0A%20%20%20%20As%20of%20September%202018%2C%20there%20were%20approximately%202%20million%20iOS%20apps%20available%20on%20the%20App%20Store%2C%20and%202.1%20million%20Android%20apps%20on%20Google%20Play.%0A%20%20%20%20Collecting%20data%20for%20over%20four%20million%20apps%20requires%20a%20significant%20amount%20of%20time%20and%20money%2C%20so%20we'll%20try%20to%20analyze%20a%20sample%20of%20data%20instead.%20To%20avoid%20spending%20resources%20on%20collecting%20new%20data%20ourselves%2C%20we%20should%20first%20try%20to%20see%20whether%20we%20can%20find%20any%20relevant%20existing%20data%20at%20no%20cost.%0A%20%20%20%20%23%23%20Data%20Sets%3A%0A%20%20%20%20*%20A%20data%20set%20containing%20data%20about%20approximately%20ten%20thousand%20Android%20apps%20from%20Google%20Play.%20https%3A%2F%2Fwww.kaggle.com%2Fdatasets%2Flava18%2Fgoogle-play-store-apps%0A%20%20%20%20*%20A%20data%20set%20containing%20data%20about%20approximately%20seven%20thousand%20iOS%20apps%20from%20the%20App%20Store.%20https%3A%2F%2Fwww.kaggle.com%2Fdatasets%2Framamet4%2Fapp-store-apple-data-set-10k-apps%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20from%20csv%20import%20reader%0A%0A%20%20%20%20path_g%20%3D%20str(mo.notebook_location()%20%2F%20%22public%22%20%2F%20%22googleplaystore.csv%22)%0A%20%20%20%20try%3A%0A%20%20%20%20%20%20%20%20from%20pyodide.http%20import%20open_url%0A%20%20%20%20%20%20%20%20lines_g%20%3D%20open_url(path_g).readlines()%0A%20%20%20%20except%20ImportError%3A%0A%20%20%20%20%20%20%20%20if%20path_g.startswith(%22http%22)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20import%20urllib.request%0A%20%20%20%20%20%20%20%20%20%20%20%20lines_g%20%3D%20urllib.request.urlopen(path_g).read().decode('utf8').splitlines()%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20with%20open(path_g%2C%20encoding%3D%22utf8%22)%20as%20f%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lines_g%20%3D%20f.readlines()%0A%0A%20%20%20%20read_file_g%20%3D%20reader(lines_g)%0A%20%20%20%20android%20%3D%20list(read_file_g)%0A%20%20%20%20android_header%20%3D%20android%5B0%5D%0A%20%20%20%20android%20%3D%20android%5B1%3A%5D%0A%0A%20%20%20%20path_a%20%3D%20str(mo.notebook_location()%20%2F%20%22public%22%20%2F%20%22AppleStore.csv%22)%0A%20%20%20%20try%3A%0A%20%20%20%20%20%20%20%20from%20pyodide.http%20import%20open_url%0A%20%20%20%20%20%20%20%20lines_a%20%3D%20open_url(path_a).readlines()%0A%20%20%20%20except%20ImportError%3A%0A%20%20%20%20%20%20%20%20if%20path_a.startswith(%22http%22)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20import%20urllib.request%0A%20%20%20%20%20%20%20%20%20%20%20%20lines_a%20%3D%20urllib.request.urlopen(path_a).read().decode('utf8').splitlines()%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20with%20open(path_a%2C%20encoding%3D%22utf8%22)%20as%20f%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lines_a%20%3D%20f.readlines()%0A%0A%20%20%20%20read_file_a%20%3D%20reader(lines_a)%0A%20%20%20%20ios%20%3D%20list(read_file_a)%0A%20%20%20%20ios_header%20%3D%20ios%5B0%5D%0A%20%20%20%20ios%20%3D%20ios%5B1%3A%5D%0A%0A%20%20%20%20return%20android%2C%20android_header%2C%20ios%2C%20ios_header%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20data%20cleaning%3A%0A%20%20%20%20*%20removing%20incomplete%20row%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(android%2C%20android_header)%3A%0A%20%20%20%20print(android%5B10472%5D)%20%20%23%20incorrect%20row%0A%20%20%20%20print('%5Cn')%0A%20%20%20%20print(android_header)%20%20%23%20header%0A%20%20%20%20print('%5Cn')%0A%0A%20%20%20%20%23del%20android%5B10472%5D%20%23remove%20it%20from%20data%20set%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20*%20inaccurate%20data%2Fdeleting%20duplicate%20data%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(android)%3A%0A%20%20%20%20unique_app%20%3D%20%5B%5D%0A%20%20%20%20duplicate_apps%20%3D%20%5B%5D%0A%20%20%20%20for%20_app%20in%20android%3A%0A%20%20%20%20%20%20%20%20if%20_app%5B0%5D%20in%20unique_app%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20duplicate_apps.append(_app%5B0%5D)%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20unique_app.append(_app%5B0%5D)%0A%20%20%20%20print(len(unique_app))%0A%20%20%20%20print(len(duplicate_apps))%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Removing%20duplicates%20data%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(android%2C%20android_header)%3A%0A%20%20%20%20print(android%5B2604%5D)%20%20%23%20incorrect%20row%0A%20%20%20%20print('%5Cn')%0A%20%20%20%20print(android_header)%20%20%23%20header%0A%20%20%20%20print('%5Cn')%0A%20%20%20%20print(len(android_header))%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20We%20are%20expecting%209659%20apps%20after%20we%20subtract%20the%20duplicates%20to%20the%20length%20of%20the%20list%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(android)%3A%0A%20%20%20%20unique_app_dic%20%3D%20%7B%7D%0A%20%20%20%20test_app%20%3D%20%5B'Facebook'%2C%20'SOCIAL'%2C%20'4.6'%2C%20'66577313'%2C%20'Varies%20with%20device'%2C%20'1%2C000%2C000%2C000%2B'%2C%20'Free'%2C%20'0'%2C%20'Teen'%2C%20'Social'%2C%20'July%2031%2C%202018'%2C%20'Varies%20with%20device'%2C%20'Varies%20with%20device'%5D%0A%20%20%20%20test_header%20%3D%20%5B'App'%2C%20'Category'%2C%20'Rating'%2C%20'Reviews'%2C%20'Size'%2C%20'Installs'%2C%20'Type'%2C%20'Price'%2C%20'Content%20Rating'%2C%20'Genres'%2C%20'Last%20Updated'%2C%20'Current%20Ver'%2C%20'Android%20Ver'%5D%0A%20%20%20%20for%20_app%20in%20android%3A%0A%20%20%20%20%20%20%20%20if%20_app%5B0%5D%20in%20unique_app_dic%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20comparison_dic%20%3D%20float(unique_app_dic%5B_app%5B0%5D%5D%5B2%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20comparison_i%20%3D%20float(_app%5B3%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20len(_app)%20%3D%3D%2013%20and%20comparison_dic%20%3C%20comparison_i%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20updated_values%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20i%20in%20range(1%2C%2013)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20updated_values.append(_app%5Bi%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20unique_app_dic%5B_app%5B0%5D%5D%20%3D%20updated_values%0A%20%20%20%20%20%20%20%20elif%20_app%5B0%5D%20not%20in%20unique_app_dic%20and%20len(_app)%20%3D%3D%2013%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20updated_values%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20i%20in%20range(1%2C%2013)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20updated_values.append(_app%5Bi%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20unique_app_dic%5B_app%5B0%5D%5D%20%3D%20updated_values%0A%20%20%20%20print(len(unique_app_dic))%0A%20%20%20%20return%20(unique_app_dic%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%5E%20we%20removed%20the%20duplicates%20as%20well%20as%20only%20leaving%20the%20apps%20with%20the%20highest%20number%20of%20reviews%20within%20the%20dictionary%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Isolating%20the%20Free%20Apps%0A%20%20%20%20As%20we%20only%20want%20to%20analyze%20data%20from%20applications%20that%20are%20free%20to%20the%20user%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Android%20Free%20Apps%20Only%0A%0A%20%20%20%20In%20this%20Code%20we%20have%20removed%20all%20the%20paid%20apps%20from%20our%20original%20%60unique_dicitoniary_dic%60%20and%20created%20a%20new%20dic%20with%20only%20free%20apps%20in%20%60android_free_app_dic%60%20removing%20755%20paid%20apps%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(unique_app_dic)%3A%0A%20%20%20%20android_free_app_dic%20%3D%7B%7D%0A%0A%20%20%20%20for%20key%20in%20unique_app_dic%3A%0A%20%20%20%20%20%20%20%20price%20%3D%20unique_app_dic%5Bkey%5D%5B5%5D%0A%20%20%20%20%20%20%20%20if%20price%20%3D%3D%20'Free'%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20key%20not%20in%20android_free_app_dic%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20android_free_app_dic%5Bkey%5D%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20android_free_app_dic%5Bkey%5D.extend(unique_app_dic%5Bkey%5D)%0A%20%20%20%20print(len(android_free_app_dic))%0A%20%20%20%20return%20(android_free_app_dic%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%23%20IOS%20Free%20Apps%20Only%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20In%20this%20code%20we%20did%20the%20same%20thing%20as%20what%20we%20did%20with%20the%20android%20data%20with%20the%20only%20difference%20is%20the%20nested%20if%2Felse%20statements%20have%20conditionals%20making%20sure%20that%20there%20is%20no%20incomplete%20data%20or%20duplicated%20data.%20If%20there%20is%20an%20instance%20of%20duplicate%20apps%2C%20we%20only%20load%20the%20data%20of%20the%20app%20which%20has%20the%20highest%20amount%20of%20rating%20count%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(ios%2C%20ios_header)%3A%0A%20%20%20%20print(ios_header)%0A%20%20%20%20IOS_free_app_dic%20%3D%20%7B%7D%0A%20%20%20%20for%20_app%20in%20ios%3A%0A%20%20%20%20%20%20%20%20ios_price%20%3D%20float(_app%5B4%5D)%0A%20%20%20%20%20%20%20%20ios_name%20%3D%20_app%5B1%5D%0A%20%20%20%20%20%20%20%20rating_count_tot%20%3D%20int(_app%5B5%5D)%0A%20%20%20%20%20%20%20%20desired_info%20%3D%20_app%5B2%3A%5D%0A%20%20%20%20%20%20%20%20track_id%20%3D%20_app%5B0%5D%0A%20%20%20%20%20%20%20%20if%20ios_price%20%3D%3D%200.0%20and%20len(_app)%20%3D%3D%2016%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20ios_name%20in%20IOS_free_app_dic%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20int(IOS_free_app_dic%5Bios_name%5D%5B4%5D)%20%3C%20rating_count_tot%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20desired_info.insert(0%2C%20track_id)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ios_updated_values%20%3D%20desired_info%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20IOS_free_app_dic%5Bios_name%5D%20%3D%20ios_updated_values%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20desired_info.insert(0%2C%20track_id)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20IOS_free_app_dic%5Bios_name%5D%20%3D%20desired_info%0A%20%20%20%20print(len(IOS_free_app_dic))%0A%20%20%20%20return%20(IOS_free_app_dic%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Most%20Common%20Apps%20by%20Genre%3A%0A%20%20%20%20In%20order%20to%20identify%20which%20apps%20would%20potentially%20be%20the%20most%20successful%2C%20we%20are%20going%20to%20look%20through%20popular%20genres%20and%20their%20ratings%20to%20see%20which%20genre%20would%20give%20us%20the%20highest%20chance%20of%20developing%20a%20successful%20app%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20def%20freq_table(dataset%2C%20index)%3A%0A%20%20%20%20%20%20%20%20freq_t%20%3D%20%7B%7D%0A%20%20%20%20%20%20%20%20for%20key%20in%20dataset%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20value%20%3D%20dataset%5Bkey%5D%5Bindex%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20value%20not%20in%20freq_t%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20freq_t%5Bvalue%5D%20%3D%201%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20freq_t%5Bvalue%5D%20%2B%3D%201%0A%20%20%20%20%20%20%20%20total_sum%20%3D%20sum(freq_t.values())%0A%20%20%20%20%20%20%20%20for%20key%20in%20freq_t%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20freq_t%5Bkey%5D%20%3D%20(freq_t%5Bkey%5D%20%2F%20total_sum)%20*%20100%0A%20%20%20%20%20%20%20%20return%20freq_t%0A%0A%0A%20%20%20%20def%20display_table(dataset%2C%20index)%3A%0A%20%20%20%20%20%20%20%20table%20%3D%20freq_table(dataset%2C%20index)%0A%20%20%20%20%20%20%20%20table_display%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20for%20key%20in%20table%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20key_val_as_tuple%20%3D%20(table%5Bkey%5D%2C%20key)%0A%20%20%20%20%20%20%20%20%20%20%20%20table_display.append(key_val_as_tuple)%0A%0A%20%20%20%20%20%20%20%20table_sorted%20%3D%20sorted(table_display%2C%20reverse%3DTrue)%0A%20%20%20%20%20%20%20%20for%20entry%20in%20table_sorted%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print(entry%5B1%5D%2C%20'%3A'%2C%20entry%5B0%5D)%0A%0A%20%20%20%20return%20(display_table%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Here%20we%20used%20the%20display%20table%20to%20show%20the%20percentage%20of%20frequent%20genres%20for%20both%20IOS%20and%20Android%20stores%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(android_free_app_dic%2C%20display_table)%3A%0A%20%20%20%20android_genre%20%3D%20display_table(android_free_app_dic%2C8)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(IOS_free_app_dic%2C%20display_table)%3A%0A%20%20%20%20IOS_genre%20%3D%20display_table(IOS_free_app_dic%2C10)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Takeaways%0A%20%20%20%20From%20here%20we%20can%20tell%20that%20if%20we%20were%20to%20attempt%20to%20create%20a%20app%20that%20is%20succesfull%20based%20off%20their%20genres%20it%20would%20be%20games%20and%20tools%20for%20the%20IOS%20stores%2C%20and%20Google%20Play%20store%20respectively%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.23.5",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
