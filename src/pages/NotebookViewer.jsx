@@ -54,7 +54,7 @@ export default function NotebookViewer({ theme, fontStack }) {
   return (
     <div style={{ background: paper, color: ink, fontFamily: serif, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header bar */}
-      <header style={{
+      <header className="viewer-header" style={{
         padding: '16px 40px',
         borderBottom: `0.5px solid ${ink}22`,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -132,7 +132,7 @@ export default function NotebookViewer({ theme, fontStack }) {
       </header>
 
       {/* Mode indicator bar */}
-      <div style={{
+      <div className="viewer-bar" style={{
         padding: '10px 40px',
         background: mode === 'marimo' ? `${accent}12` : `${panel}`,
         borderBottom: `0.5px solid ${ink}15`,

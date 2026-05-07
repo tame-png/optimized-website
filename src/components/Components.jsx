@@ -378,7 +378,7 @@ import { Link } from 'react-router-dom';
 
 export function NavBar({ ink, accent, mono, active }) {
   return (
-    <nav style={{
+    <nav className="site-nav" style={{
       display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       padding: '22px 56px 0',
       fontFamily: mono, fontSize: 17, letterSpacing: '0.08em',
@@ -407,7 +407,7 @@ export function NavBar({ ink, accent, mono, active }) {
 // ─── SiteFooter ──────────────────────────────────────────────
 export function SiteFooter({ ink, accent, serif, mono, P }) {
   return (
-    <footer style={{
+    <footer className="site-footer" style={{
       padding: '36px 56px 48px', borderTop: `0.5px solid ${ink}33`,
       display: 'flex', justifyContent: 'space-between',
       alignItems: 'baseline', gap: 24, flexWrap: 'wrap',

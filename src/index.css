@@ -23,6 +23,53 @@ a {
   color: #1c1814;
 }
 
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; padding: 24px 20px 32px !important; }
+  .hero-grid figure { max-width: 280px; }
+  .hero-grid h1 { font-size: 48px !important; }
+  .chart-section { padding: 24px 20px !important; }
+  .chart-section .chart-inner { grid-template-columns: 1fr !important; }
+  .index-section { padding: 40px 20px 0 !important; }
+  .index-section h2 { font-size: 32px !important; }
+  .cards-section { padding: 24px 20px 40px !important; }
+  .cards-grid { grid-template-columns: 1fr !important; }
+  .skills-strip { grid-template-columns: 1fr !important; padding: 24px 20px !important; }
+  .site-footer { padding: 24px 20px 32px !important; flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+  .site-nav { padding: 16px 20px 0 !important; font-size: 12px !important; flex-wrap: wrap !important; gap: 12px !important; }
+  .site-nav span { gap: 14px !important; }
+  .notebooks-header { padding: 32px 20px 0 !important; }
+  .notebooks-header h1 { font-size: 40px !important; }
+  .notebooks-cards { padding: 0 20px 40px !important; }
+  .viewer-header { padding: 12px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .viewer-bar { padding: 8px 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; }
+  .resume-article { padding: 32px 20px 48px !important; }
+  .resume-article header { grid-template-columns: 1fr !important; text-align: center !important; }
+  .resume-title-block { grid-template-columns: 1fr !important; gap: 24px !important; margin-top: 32px !important; margin-bottom: 32px !important; }
+  .resume-title-block h1 { font-size: 48px !important; }
+  .resume-title-block aside { padding-top: 0 !important; }
+  .resume-education { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .resume-skills { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .resume-project { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .resume-experience { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .resume-colophon { grid-template-columns: 1fr !important; text-align: left !important; gap: 6px !important; }
+  .lbrhe-nav { padding: 14px 20px !important; flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; }
+  .lbrhe-header { padding: 32px 20px 24px !important; }
+  .lbrhe-header h1 { font-size: 40px !important; }
+  .lbrhe-header .meta-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+  .lbrhe-abstract { padding: 32px 20px !important; }
+  .lbrhe-abstract .abstract-inner { grid-template-columns: 1fr !important; }
+  .lbrhe-main { padding: 0 20px !important; }
+  .lbrhe-main .stats-row { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  .lbrhe-main .three-col { grid-template-columns: 1fr !important; }
+  .lbrhe-main .two-col { grid-template-columns: 1fr !important; }
+  .lbrhe-main .timeline-grid { grid-template-columns: 1fr !important; }
+  .lbrhe-main .timeline-grid li { border-right: none !important; border-bottom: 0.5px solid #e8dcc433 !important; }
+  .lbrhe-main .section-head { grid-template-columns: 1fr !important; gap: 8px !important; }
+  .lbrhe-main .deliverables-grid { grid-template-columns: 1fr !important; }
+  .lbrhe-main .contribution-grid { grid-template-columns: 1fr !important; }
+  .lbrhe-colophon { grid-template-columns: 1fr !important; text-align: left !important; gap: 6px !important; }
+}
+
 @media print {
   body {
     background: #fff !important;

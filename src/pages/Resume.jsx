@@ -117,7 +117,7 @@ export default function Resume({ theme, fontStack }) {
 
   return (
     <div style={{ minHeight: '100vh', background: paper, color: ink, fontFamily: serif, padding: '40px 0' }}>
-      <article style={{
+      <article className="resume-article" style={{
         maxWidth: 1080, margin: '0 auto', background: paper,
         border: `0.5px solid ${ink}33`, padding: '60px 72px 80px',
         position: 'relative'
@@ -150,7 +150,7 @@ export default function Resume({ theme, fontStack }) {
         </header>
 
         {/* Title block */}
-        <section style={{
+        <section className="resume-title-block" style={{
           display: 'grid', gridTemplateColumns: '200px 1fr',
           gap: 40, marginTop: 56, marginBottom: 56
         }}>
@@ -215,7 +215,7 @@ export default function Resume({ theme, fontStack }) {
 
         {/* Education */}
         <SectionHead roman="i" label="education" />
-        <section style={{
+        <section className="resume-education" style={{
           display: 'grid', gridTemplateColumns: '200px 1fr 200px',
           gap: 40, alignItems: 'baseline'
         }}>
@@ -260,7 +260,7 @@ export default function Resume({ theme, fontStack }) {
 
         {/* Skills */}
         <SectionHead roman="ii" label="apparatus & languages" />
-        <section style={{
+        <section className="resume-skills" style={{
           display: 'grid', gridTemplateColumns: '200px 1fr 1fr 1fr',
           gap: 28, marginBottom: 24
         }}>
@@ -297,7 +297,7 @@ export default function Resume({ theme, fontStack }) {
         <SectionHead roman="iii" label="projects & extracurricular" />
         <ol style={{ listStyle: 'none', margin: 0, padding: 0 }}>
           {PROJECTS.map((p, idx) =>
-            <li key={p.fig} style={{
+            <li key={p.fig} className="resume-project" style={{
               display: 'grid', gridTemplateColumns: '200px 1fr',
               gap: 40, alignItems: 'start',
               padding: '26px 0',
@@ -367,7 +367,7 @@ export default function Resume({ theme, fontStack }) {
         {/* Experience */}
         <SectionHead roman="iv" label="professional experience" />
         {EXPERIENCE.map((e) =>
-          <section key={e.title} style={{
+          <section key={e.title} className="resume-experience" style={{
             display: 'grid', gridTemplateColumns: '200px 1fr',
             gap: 40, alignItems: 'start'
           }}>
@@ -414,7 +414,7 @@ export default function Resume({ theme, fontStack }) {
         )}
 
         {/* Colophon */}
-        <footer style={{
+        <footer className="resume-colophon" style={{
           marginTop: 64, paddingTop: 16,
           borderTop: `2px solid ${ink}`,
           display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',

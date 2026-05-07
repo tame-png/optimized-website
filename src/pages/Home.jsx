@@ -28,7 +28,7 @@ export default function Home({ theme, fontStack }) {
       <NavBar ink={ink} accent={accent} mono={mono} active="home" />
 
       {/* Hero */}
-      <section style={{
+      <section className="hero-grid" style={{
         display: 'grid', gridTemplateColumns: '5fr 7fr',
         gap: 48, padding: '40px 56px 48px', alignItems: 'end',
       }}>
@@ -76,12 +76,12 @@ export default function Home({ theme, fontStack }) {
       </section>
 
       {/* I-94 interactive chart */}
-      <section style={{
+      <section className="chart-section" style={{
         background: panel,
         borderTop: `0.5px solid ${ink}33`, borderBottom: `0.5px solid ${ink}33`,
         padding: '36px 56px',
       }}>
-        <div style={{
+        <div className="chart-inner" style={{
           display: 'grid', gridTemplateColumns: '1fr 2.5fr',
           gap: 36, alignItems: 'start',
         }}>
@@ -111,7 +111,7 @@ export default function Home({ theme, fontStack }) {
       </section>
 
       {/* Index of works */}
-      <section style={{ padding: '60px 56px 0' }}>
+      <section className="index-section" style={{ padding: '60px 56px 0' }}>
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
           marginBottom: 24, gap: 24, flexWrap: 'wrap',
@@ -152,8 +152,8 @@ export default function Home({ theme, fontStack }) {
         </div>
       </section>
 
-      <section style={{ padding: '24px 56px 60px' }}>
-        <div style={{
+      <section className="cards-section" style={{ padding: '24px 56px 60px' }}>
+        <div className="cards-grid" style={{
           display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
           gap: '48px 36px',
         }}>
@@ -200,7 +200,7 @@ export default function Home({ theme, fontStack }) {
                   display: 'flex', flexWrap: 'wrap', gap: 6,
                   fontFamily: mono, fontSize: 10, color: `${ink}aa`, flex: 1,
                 }}>
-                  {[...p.methods, ...p.tools].slice(0, 6).map((m) => (
+                  {[...new Set([...p.methods, ...p.tools])].slice(0, 6).map((m) => (
                     <span key={m} style={{
                       padding: '3px 8px', border: `0.5px solid ${ink}33`, borderRadius: 2
                     }}>{m}</span>
@@ -218,7 +218,7 @@ export default function Home({ theme, fontStack }) {
       </section>
 
       {/* Skills strip */}
-      <section style={{
+      <section className="skills-strip" style={{
         padding: '36px 56px',
         borderTop: `0.5px solid ${ink}33`,
         display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
