@@ -1,0 +1,103 @@
+/* Shoreline Portfolio — generated from tokens.json */
+:root, [data-theme="low-tide"] {
+  --surface: #fbf9f5;
+  --surface-raised: #f0ece1;
+  --surface-plate: #f6f3eb;
+  --ink: #181c20;
+  --ink-muted: #525860;
+  --rule: #181c202e;
+  --rule-strong: #181c20bf;
+  --accent: #005a8d;
+  --on-accent: #fbf9f5;
+  --accent-soft: #005a8d24;
+  --gold: #ffc72a;
+  --on-gold: #181c20;
+  --gold-deep: #eba91b;
+  --sea-tint: #9bd3f2;
+  --signal: #d55e39;
+  --signal-text: #b03f23;
+  --kelp: #2e6f5e;
+  --focus: #005a8d;
+  --scrim: #0f141cb8;
+  --shadow-card: 0 8px 24px -6px #003d7812;
+}
+[data-theme="golden-hour"] {
+  --surface: #f4ebd9;
+  --surface-raised: #e8d8be;
+  --surface-plate: #eee2cc;
+  --ink: #2a211b;
+  --ink-muted: #655346;
+  --rule: #2a211b33;
+  --rule-strong: #2a211bcc;
+  --accent: #9e3a1e;
+  --on-accent: #f4ebd9;
+  --accent-soft: #9e3a1e24;
+  --gold: #ffc72a;
+  --on-gold: #2a211b;
+  --gold-deep: #c88a14;
+  --sea-tint: #c28663;
+  --signal: #8a2a1f;
+  --signal-text: #8a2a1f;
+  --kelp: #3e4d38;
+  --focus: #9e3a1e;
+  --scrim: #2a211bb8;
+  --shadow-card: 0 8px 24px -6px #2a211b1a;
+}
+[data-theme="high-tide"] {
+  --surface: #161b22;
+  --surface-raised: #1f2937;
+  --surface-plate: #1a2230;
+  --ink: #e6edf3;
+  --ink-muted: #9ca3af;
+  --rule: #e6edf329;
+  --rule-strong: #e6edf3bf;
+  --accent: #ffc72a;
+  --on-accent: #161b22;
+  --accent-soft: #ffc72a24;
+  --gold: #ffc72a;
+  --on-gold: #161b22;
+  --gold-deep: #38bdf8;
+  --sea-tint: #244c5d;
+  --signal: #f97316;
+  --signal-text: #f97316;
+  --kelp: #34d399;
+  --focus: #38bdf8;
+  --scrim: #05080cd1;
+  --shadow-card: 0 10px 28px -6px #00000073;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --measure: 42em;
+  --page-max: 1160px;
+  --radius-0: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-pill: 999px;
+  --hairline: 0.5px;
+  --line: 1px;
+  --line-strong: 1.5px;
+  --flagship-edge: 4px;
+  --font-display: "Spectral", "EB Garamond", Georgia, serif;
+  --font-serif: "EB Garamond", "Spectral", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.display-xl { font-family: var(--font-display); font-size: 76px; line-height: 0.94; font-weight: 400; letter-spacing: -0.025em; }
+.display-lg { font-family: var(--font-display); font-size: 52px; line-height: 1.05; font-weight: 400; letter-spacing: -0.02em; }
+.heading-2 { font-family: var(--font-display); font-size: 36px; line-height: 1.1; font-weight: 400; }
+.heading-3 { font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 500; }
+.kpi { font-family: var(--font-display); font-size: 24px; line-height: 1.1; font-weight: 600; }
+.numeral { font-family: var(--font-display); font-size: 34px; line-height: 1; font-weight: 400; font-style: italic; }
+.body-lg { font-family: var(--font-serif); font-size: 20px; line-height: 1.55; font-weight: 400; }
+.body { font-family: var(--font-serif); font-size: 18px; line-height: 1.6; font-weight: 400; }
+.body-sm { font-family: var(--font-serif); font-size: 16px; line-height: 1.5; font-weight: 400; }
+.caption { font-family: var(--font-serif); font-size: 13px; line-height: 1.5; font-weight: 400; font-style: italic; }
+.label { font-family: var(--font-mono); font-size: 11px; line-height: 1.4; font-weight: 500; letter-spacing: 0.12em; }
+.meta { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; font-weight: 400; }
+.code { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.55; font-weight: 400; }
