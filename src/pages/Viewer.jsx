@@ -258,7 +258,7 @@ function NotebookView({ p }) {
           </span>
           <span>
             {tab === 'live'
-              ? 'Edit any cell and the dependents re-run'
+              ? 'Python runs the notebook in your browser'
               : tab === 'explainer'
                 ? 'Prepared states, no Python running'
                 : tab === 'code'

@@ -59,8 +59,12 @@ window.__test = async function () {
   // viewer
   await go('/notebooks/i94', 1500);
   const tabs = () => qa('.toolbar [role=tab]');
-  const fr = q('.frame iframe');
-  let inner = 0; try { inner = fr.contentDocument.body.innerText.length; } catch { /* frame not readable yet */ }
+  // The saved-output page builds itself with scripts from a CDN, so give it real time to finish.
+  let inner = 0;
+  for (let i = 0; i < 60 && inner <= 500; i++) {
+    try { inner = q('.frame iframe').contentDocument.body.innerText.length; } catch { /* frame not readable yet */ }
+    if (inner <= 500) await sleep(500);
+  }
   ok('saved outputs load in the frame', inner > 500, inner);
   tabs()[0].focus();
   tabs()[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })); await sleep(300);

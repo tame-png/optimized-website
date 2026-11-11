@@ -8,10 +8,10 @@
 // Set BROWSER_BIN to use a different Chromium-based browser.
 import { execFile } from 'node:child_process'
 import fs from 'node:fs'
-import http from 'node:http'
 import os from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { createStaticServer } from '../server.mjs'
 
 const target = process.argv[2] === 'artifact' ? 'artifact' : 'website'
 const here = path.dirname(fileURLToPath(import.meta.url))
@@ -39,31 +39,15 @@ if (!BROWSER) {
   process.exit(2)
 }
 
-const TYPES = {
-  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css',
-  '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon',
-  '.pdf': 'application/pdf', '.py': 'text/plain; charset=utf-8', '.csv': 'text/csv; charset=utf-8',
-  '.wasm': 'application/wasm', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8',
-}
-
 // Serves the build, plus the harness files from tests/ under /__run.html, /__frame.html and /__tests/.
-const server = http.createServer((req, res) => {
-  const url = decodeURIComponent(new URL(req.url, 'http://x').pathname)
-  let file
-  if (url === '/__run.html') file = path.join(here, 'run.html')
-  else if (url === '/__frame.html') file = path.join(here, 'frame.html')
-  else if (url.startsWith('/__tests/')) file = path.join(here, path.basename(url))
-  else file = path.join(root, url.endsWith('/') ? url + 'index.html' : url)
-
-  if (!file.startsWith(here) && !file.startsWith(root)) return res.writeHead(403).end()
-  if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) {
-    // Like the real host: an unknown address without a file extension gets the app shell.
-    if (spa && !path.extname(url)) file = path.join(root, 'index.html')
-    else return res.writeHead(404).end('not found')
-  }
-  res.writeHead(200, { 'content-type': TYPES[path.extname(file).toLowerCase()] || 'application/octet-stream', 'cache-control': 'no-store' })
-  if (req.method === 'HEAD') return res.end()
-  fs.createReadStream(file).pipe(res)
+const server = createStaticServer({
+  root,
+  spa,
+  resolve(url) {
+    if (url === '/__run.html') return path.join(here, 'run.html')
+    if (url === '/__frame.html') return path.join(here, 'frame.html')
+    if (url.startsWith('/__tests/')) return path.join(here, path.basename(url))
+  },
 })
 
 function runInBrowser(width, height, run) {

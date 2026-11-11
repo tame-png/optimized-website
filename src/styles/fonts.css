@@ -1,0 +1,60 @@
+/* The site's three typefaces, served from the site itself (latin subset, woff2).
+   Nothing is fetched from Google Fonts, so the pages render the same offline or on a private network,
+   and a visitor's browser opens no third-party connection.
+
+   EB Garamond and JetBrains Mono are variable fonts: one file covers every weight.
+   The weight ranges stop at 600 because the design never asked for a heavier cut;
+   <strong> and <b> therefore resolve to 600, as they always have here.
+   Files come from the @fontsource packages (dev dependencies); Vite copies only these seven into the build. */
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Spectral";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/spectral/files/spectral-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spectral";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/spectral/files/spectral-latin-400-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spectral";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/spectral/files/spectral-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spectral";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../node_modules/@fontsource/spectral/files/spectral-latin-600-normal.woff2") format("woff2");
+}

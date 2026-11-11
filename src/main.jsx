@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import { installScrollMemory } from './lib/scroll.js';
+import './styles/fonts.css';
 import './styles/base.css';
 import './styles/responsive.css';
 
