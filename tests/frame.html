@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><title>viewport harness</title>
+<body style="margin:0;background:#7a7a7a">
+<iframe id="f" style="border:0;display:block;background:#fff"></iframe>
+<script>
+const p = new URLSearchParams(location.search), f = document.getElementById('f');
+f.style.width = p.get('w') + 'px'; f.style.height = p.get('h') + 'px';
+if (p.get('tide')) localStorage.setItem('tide', p.get('tide')); else localStorage.removeItem('tide');
+f.src = p.get('mode') === 'path' ? (p.get('r') || '/') : '/index.html#' + (p.get('r') || '/');
+f.onload = () => {
+  const d = f.contentDocument, s = d.createElement('style');
+  s.textContent = '*,*:before,*:after{animation-duration:0s!important;animation-delay:0s!important;transition:none!important}';
+  d.head.appendChild(s);
+  if (p.get('click')) setTimeout(() => d.querySelector(p.get('click'))?.click(), 600);
+  if (p.get('y')) setTimeout(() => f.contentWindow.scrollTo(0, +p.get('y')), 900);
+};
+</script>

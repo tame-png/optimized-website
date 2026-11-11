@@ -1,15 +1,70 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="low-tide">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andy Molina — Portfolio</title>
+    <title>Andy Molina · Applied statistics portfolio</title>
+    <meta name="description" content="Notebooks that run in your browser, R pipelines, workbooks and certificates from an applied-statistics student at Long Beach State." />
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+    <meta name="author" content="Andy Molina" />
+    <meta name="theme-color" content="#fbf9f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#161b22" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Andy Molina" />
+    <meta property="og:title" content="Andy Molina · Applied statistics portfolio" />
+    <meta property="og:description" content="Notebooks that run in your browser, R pipelines, workbooks and certificates from an applied-statistics student at Long Beach State." />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Andy Molina, applied statistics, Long Beach State: a bathymetric plate of San Pedro Bay" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Andy Molina · Applied statistics portfolio" />
+    <meta name="twitter:description" content="Notebooks that run in your browser, R pipelines, workbooks and certificates from an applied-statistics student at Long Beach State." />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og.png" />
+    <link rel="icon" href="/marks/pyramid-stamp.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "dateModified": "2026-11-11",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Andy Molina",
+          "url": "%VITE_SITE_URL%/",
+          "email": "mailto:AndyxMolina@outlook.com",
+          "jobTitle": "Applied statistics student",
+          "description": "Applied-statistics undergraduate at California State University, Long Beach: marimo notebooks, R pipelines with tidycensus, Excel workbooks.",
+          "affiliation": { "@type": "CollegeOrUniversity", "name": "California State University, Long Beach" },
+          "address": { "@type": "PostalAddress", "addressLocality": "Long Beach", "addressRegion": "CA", "addressCountry": "US" },
+          "sameAs": ["https://github.com/tame-png"],
+          "knowsAbout": ["Statistics", "Python", "R", "pandas", "tidycensus", "Tableau", "marimo"]
+        }
+      }
+    </script>
+    <script>
+      // Sets the tide before the first paint so the page never flashes the wrong theme.
+      // Keep the hours and colours in step with src/tide/tides.js.
+      (function () {
+        try {
+          var saved = localStorage.getItem('tide');
+          var h = new Date().getHours();
+          var auto = h >= 6 && h < 16 ? 'low-tide' : h < 20 ? 'golden-hour' : 'high-tide';
+          var tide = saved && saved !== 'auto' ? saved : auto;
+          document.documentElement.setAttribute('data-theme', tide);
+          var chrome = { 'low-tide': '#fbf9f5', 'golden-hour': '#f4ebd9', 'high-tide': '#161b22' }[tide];
+          var metas = document.querySelectorAll('meta[name="theme-color"]');
+          if (chrome) for (var i = 0; i < metas.length; i++) { metas[i].removeAttribute('media'); metas[i].setAttribute('content', chrome); }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript><p style="font-family: Georgia, serif; padding: 24px">This portfolio needs JavaScript to render. The resume is at <a href="%BASE_URL%resume/Andy_Molina_Resume.pdf">Andy_Molina_Resume.pdf</a>.</p></noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

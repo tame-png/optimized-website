@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:artifact": "vite build --mode artifact",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node tests/run.mjs website",
+    "test:artifact": "node tests/run.mjs artifact"
   },
   "dependencies": {
     "react": "^19.2.5",
