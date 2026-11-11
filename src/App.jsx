@@ -1,31 +1,54 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/Home';
-import Notebooks from './pages/Notebooks';
-import NotebookViewer from './pages/NotebookViewer';
-import Resume from './pages/Resume';
-import LBRHEPage from './pages/Lbrhe';
-import { THEME, FONTS } from './data';
+import { Suspense, lazy } from 'react';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
+import Header, { SkipLink } from './components/Header.jsx';
+import { Postcard, ScrollManager } from './components/Layout.jsx';
+import { ARTIFACT } from './lib/paths.js';
+import Home from './pages/Home.jsx';
+import TideProvider from './tide/TideProvider.jsx';
 
-function App() {
+const Notebooks = lazy(() => import('./pages/Notebooks.jsx'));
+const Viewer = lazy(() => import('./pages/Viewer.jsx'));
+const Files = lazy(() => import('./pages/Files.jsx'));
+const Certificates = lazy(() => import('./pages/Certificates.jsx'));
+const Paper = lazy(() => import('./pages/Paper.jsx'));
+const Resume = lazy(() => import('./pages/Resume.jsx'));
+const NotFound = lazy(() => import('./pages/NotFound.jsx'));
+
+// The website uses normal addresses (/resume). An artifact is served from a path it does not
+// control, so that build keeps the route after a # instead.
+const Router = ARTIFACT ? HashRouter : BrowserRouter;
+
+function Loading() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home theme={THEME} fontStack={FONTS} />} />
-        <Route path="/notebooks" element={<Notebooks theme={THEME} fontStack={FONTS} />} />
-        <Route path="/viewer/:projectId" element={<NotebookViewer theme={THEME} fontStack={FONTS} />} />
-        <Route path="/resume" element={<Resume theme={THEME} fontStack={FONTS} />} />
-        <Route path="/lbrhe" element={<LBRHEPage theme={THEME} fontStack={FONTS} />} />
-        {/* Redirect old HTML paths to the new router paths */}
-        <Route path="/index.html" element={<Navigate to="/" replace />} />
-        <Route path="/notebooks.html" element={<Navigate to="/notebooks" replace />} />
-        <Route path="/resume.html" element={<Navigate to="/resume" replace />} />
-        <Route path="/lbrhe.html" element={<Navigate to="/lbrhe" replace />} />
-        <Route path="/viewer.html" element={<Navigate to="/notebooks" replace />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </BrowserRouter>
+    <main className="page wrap">
+      <p className="loading" role="status">
+        Loading…
+      </p>
+    </main>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <TideProvider>
+      <Router>
+        <ScrollManager />
+        <SkipLink />
+        <Header />
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/notebooks" element={<Notebooks />} />
+            <Route path="/notebooks/:slug" element={<Viewer />} />
+            <Route path="/files" element={<Files />} />
+            <Route path="/certificates" element={<Certificates />} />
+            <Route path="/paper/lbrhe" element={<Paper />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+        <Postcard />
+      </Router>
+    </TideProvider>
+  );
+}

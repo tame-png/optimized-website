@@ -1,0 +1,195 @@
+/* Responsive and touch pass, November 2026.
+   Loaded after base.css, so a rule here wins over the same selector there.
+   Every rule answers a problem found by testing 320 px to 2560 px. */
+
+/* Native controls and scrollbars match the tide. */
+:root{color-scheme:light}
+[data-theme=high-tide]{color-scheme:dark}
+
+/* Route changes jump to the top; phones do not inflate text in landscape. */
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:76px}
+body{-webkit-tap-highlight-color:transparent;overflow-wrap:break-word}
+
+/* ── Header ── the bar is now sticky for real (it used to be trapped inside <header>). */
+.nav{top:env(safe-area-inset-top,0px)}
+.ticker .tk-narrow{display:none}
+.nav-menu{display:contents}
+.menu-btn{display:none}
+.links a{padding-top:6px;padding-bottom:4px}
+
+/* Between tablet and laptop the three groups no longer wrap onto a second row. */
+@media (min-width:901px) and (max-width:1120px){
+  .nav .wrap{gap:12px}
+  .links{gap:16px}
+  .links a{font-size:16px}
+  .brand .badge{display:none}
+  .nav-actions{gap:8px}
+  .nav .tides button{padding:4px 6px}
+}
+
+@media (max-width:900px){
+  .ticker .tk-wide,.ticker .right{display:none}
+  .ticker .tk-narrow{display:inline}
+  .ticker .wrap{white-space:nowrap;overflow:hidden}
+  .nav .wrap{flex-wrap:wrap;gap:0 12px;padding-top:8px;padding-bottom:8px}
+  .menu-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:1px solid var(--rule-strong);background:transparent;color:var(--ink);font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,color .2s}
+  .menu-btn .bars{position:relative;width:16px;height:11px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+  .menu-btn .bars:before{content:"";position:absolute;left:0;right:0;top:50%;margin-top:-.75px;border-top:1.5px solid currentColor}
+  .menu-btn[aria-expanded=true]{background:var(--ink);color:var(--surface)}
+  .nav-menu{display:none;width:100%}
+  .nav-menu[data-open=true]{display:block;margin-top:8px;padding:2px 0 8px;border-top:.5px solid var(--rule);max-height:calc(100vh - 72px);max-height:calc(100dvh - 72px);overflow-y:auto;overscroll-behavior:contain}
+  .links{order:0;flex-direction:column;align-items:stretch;gap:0;width:100%;overflow:visible}
+  .links a{display:flex;align-items:center;justify-content:space-between;min-height:50px;padding:0 2px;font-size:20px;border-bottom:.5px solid var(--rule)}
+  .links a:hover,.links a.active{border-bottom-color:var(--rule)}
+  .links a.active{color:var(--accent)}
+  .links a.active:after{content:"you are here";font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--ink-muted)}
+  .nav-actions{flex-wrap:wrap;gap:10px;padding-top:14px}
+  .nav-actions>div{flex:1 1 100%}
+  .nav-actions .tides{display:flex;width:100%}
+  .nav-actions .tides button{flex:1 1 auto;min-height:44px;font-size:12px;padding:4px 6px}
+  .nav-actions .btn{flex:1 1 100%;justify-content:center;min-height:44px;font-size:12.5px}
+}
+@media (max-width:360px){
+  .brand .badge{display:none}
+}
+
+/* Smallest labels are a touch larger everywhere. */
+.badge{font-size:10.5px}
+.file th{font-size:10.5px}
+
+/* Links that sit on their own line get at least a 24 px target, even with a mouse. */
+.addr a,.contact a,.file .meta a{display:inline-block;padding:4px 0}
+.addr{line-height:1.5}
+
+/* ── Touch targets and legibility on phones and tablets ── */
+@media (max-width:900px),(pointer:coarse){
+  .btn{min-height:44px;padding:10px 16px;font-size:12.5px}
+  .btn.sm{min-height:40px;padding:8px 12px;font-size:12px}
+  .btn.ghost{padding-left:0;padding-right:0}
+  .tab{min-height:44px;padding:8px 14px;font-size:12.5px}
+  .chip{min-height:44px;padding:8px 14px;font-size:16px}
+  .tides button{min-height:40px;padding:4px 10px;font-size:11.5px}
+  .brand-name{display:inline-flex;align-items:center;min-height:44px}
+  .brand{align-items:center}
+  .drawer summary{min-height:48px;align-items:center;font-size:12px}
+  .addr{font-size:13px;line-height:1.5}
+  .addr a,.contact a,.file .meta a,.datalist li a{display:inline-block;padding:11px 0}
+  .addr>div{padding:0}
+  .pill{font-size:11px}
+  .badge{font-size:11px}
+  .file th{font-size:11px}
+  .tide-note,.plate-head,.plate-cap,.file .meta,.cert .status,.cert .thumb,.cell.code .cell-head,.card .foot .go{font-size:12px}
+  .brief dt{font-size:11px}
+  .hbar{font-size:12px}
+}
+@media (max-width:720px){
+  .ticker{font-size:12px}
+}
+/* Lift-on-hover is for mice; on touch it sticks after a tap. */
+@media (hover:none){
+  .card:hover{transform:none;box-shadow:none;border-color:var(--rule)}
+  .cert:hover{box-shadow:none;border-color:var(--rule)}
+}
+.card:active{border-color:var(--accent)}
+
+/* ── Home ── on one column the name and the calls to action come before the plate. */
+@media (max-width:900px){
+  .hero{padding-top:20px;padding-bottom:20px}
+  .hero>.plate{order:2;width:100%;max-width:560px;justify-self:center}
+  .wave{margin-top:20px}
+}
+@media (max-width:640px){
+  .sec{margin:40px 0 16px;gap:12px}
+  .hero .lede{font-size:19px}
+  .card{padding:18px}
+  .card h3{font-size:22px}
+  .cert{padding:16px}
+  .skills div{padding:16px}
+}
+.card .foot{flex-wrap:wrap}
+.card .foot .go{white-space:nowrap;margin-left:auto}
+.plate-head span:last-child,.plate-cap b{text-align:right}
+.plate-cap b{white-space:nowrap;flex:none}
+
+/* ── Notebook viewer ── */
+.frame{height:min(72vh,960px);min-height:min(480px,calc(100vh - 96px))}
+@supports (height:1svh){
+  .frame{min-height:min(480px,calc(100svh - 96px))}
+}
+.cell.code pre,.drawer pre{-webkit-overflow-scrolling:touch}
+@media (max-width:720px){
+  .viewer{padding:14px}
+  .toolbar h1{font-size:23px}
+  .toolbar .actions{width:100%}
+  .toolbar .tabs{width:100%}
+  .toolbar .tab{flex:1 1 auto;text-align:center}
+  .toolbar .actions>.btn{flex:1 1 0;justify-content:center}
+  .frame{height:76vh}
+  .cell.md{padding:12px 14px}
+  .viewer .foot{font-size:13px}
+}
+@supports (height:1svh){
+  @media (max-width:720px){.frame{height:76svh}}
+}
+
+/* Drawers show that they open and close. */
+.drawer summary{align-items:center;flex-wrap:wrap;row-gap:2px}
+.drawer summary span:first-child:before{content:"+";display:inline-block;width:1.3em;font-weight:600}
+.drawer[open] summary span:first-child:before{content:"\2212"}
+.drawer summary span:last-child{min-width:0;overflow-wrap:anywhere}
+
+/* The data preview table scrolls inside its card instead of widening the page. */
+.file>div{min-width:0}
+.file table{display:block;max-width:100%;overflow-x:auto}
+
+/* ── Working paper ── */
+.hbar.two{grid-template-columns:120px 1fr 110px}
+@media (max-width:640px){
+  .paper .standfirst{font-size:18px}
+  .paper .meta{grid-template-columns:1fr}
+  .hbar{grid-template-columns:74px 1fr 40px;gap:8px}
+  .hbar.two{grid-template-columns:74px 1fr 96px}
+  .drawer pre{font-size:12px;padding:12px}
+}
+
+/* The low-income bar sits on top of the high-income bar, so both colours read true. */
+.hbar.two .bar{z-index:1}
+.hbar.two .bar.hi{z-index:0}
+
+/* ── Resume ── */
+.edu{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.resume h3{line-height:1.25}
+@media (max-width:900px){
+  .resume .title{margin:8px 0 28px}
+  .resume .title>.contact{order:2}
+}
+@media (max-width:560px){
+  .edu{grid-template-columns:1fr;gap:12px;justify-items:start}
+}
+@media (max-width:480px){
+  .resume{padding:22px 16px 28px}
+  .resume .title{margin:24px 0}
+  .tools-cols{gap:12px}
+}
+
+/* ── Footer postcard ── centred with a gutter at every width (it used to hug the left edge). */
+.postcard.wrap{width:calc(100% - 2*var(--space-6));margin:56px auto 48px;padding:32px}
+@media (max-width:640px){
+  .postcard.wrap{width:calc(100% - 2*var(--space-4));margin-top:40px;padding:20px 18px}
+}
+
+@media print{
+  .menu-btn{display:none!important}
+  .frame{height:auto}
+}
+
+/* 320 px phones: the footer theme switch and label fit inside the card. */
+.postcard .pill{white-space:normal}
+.postcard .tides{max-width:100%}
+@media (max-width:380px){
+  .postcard .tides{display:flex;width:100%}
+  .postcard .tides button{flex:1 1 auto;padding:4px 5px}
+}
+@media (max-width:340px){
+  .postcard .tides button{padding:4px 2px;font-size:11px;letter-spacing:0}
+}

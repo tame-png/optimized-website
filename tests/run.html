@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><title>test runner</title>
+<body style="margin:0;background:#7a7a7a">
+<iframe id="f" style="border:0;display:block;background:#fff"></iframe>
+<pre id="result">PENDING</pre>
+<script>
+// Loads the built site in an exact-size frame and runs behaviour.js or audit.js inside it.
+// Query: w, h (frame size), run=behaviour|audit, mode=path for the website build (omit for the artifact build).
+const p = new URLSearchParams(location.search), f = document.getElementById('f');
+f.style.width = p.get('w') + 'px'; f.style.height = p.get('h') + 'px';
+localStorage.removeItem('tide');
+const pathMode = p.get('mode') === 'path';
+f.src = pathMode ? '/' : './index.html';
+f.onload = async () => {
+  f.onload = null;
+  const w = f.contentWindow, d = f.contentDocument;
+  const errors = [];
+  w.addEventListener('error', (e) => errors.push(String(e.message)));
+  w.addEventListener('unhandledrejection', (e) => errors.push('rejection: ' + String(e.reason)));
+  w.__pathMode = pathMode;
+  const which = p.get('run') || 'behaviour';
+  await new Promise((ok, no) => { const s = d.createElement('script'); s.src = '/__tests/' + which + '.js?' + Date.now(); s.onload = ok; s.onerror = no; d.head.appendChild(s); });
+  try {
+    const out = await (which === 'behaviour' ? w.__test() : w.__audit2());
+    document.getElementById('result').textContent = 'RESULT ' + out + ' ERRORS ' + JSON.stringify(errors);
+  } catch (e) {
+    document.getElementById('result').textContent = 'CRASH ' + e + ' ' + (e && e.stack) + ' ERRORS ' + JSON.stringify(errors);
+  }
+};
+</script>
